@@ -1,0 +1,14 @@
+%Earthquake scenarios information
+%1st column is the weight for the logic tree scheme,
+%2nd column is latitude in degrees (e.g.: 50.90)
+%3rd column is longitude in degrees (eg.: 10.90)
+%4th column is focal depth in km (eg.: 20)
+%5th column is Ms magnitude (6.0)
+%6th column is Mw magnitude (6.0)
+%7th column is Fault orientation in degrees from North (e.g. 0.0)
+%8th column is Dip Angle in degrees (e.g: 0.0)
+%9th column is Fault Mechanism:Strike-Slip(0);Normal(1);Reverse(2);All(3)
+%10th column is the numerical code for the spectral shape as found in spectral.m function. For example: 1 is UBC 2006 spectral shape.
+0.50 44.819 25.581 20.00 8.30 8.30 45.00 90.00 0 2
+0.50 44.819 25.581 20.00 8.30 8.30 45.00 90.00 0 2
+0.30 44.299 25.311 20.00 8.30 8.30 45.00 40.00 1 2

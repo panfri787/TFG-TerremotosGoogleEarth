@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+
+    <title th:text="${tittle}">Tittle</title>
+</head>
+<body>
+    <div class="container">
+       <div class="row">
+           <h1 th:text="${tittle}">Header</h1>
+       </div>
+       <div class="row">
+           <div class="col-lg-9" id="map3d" style="height:500px; width: 800px;"></div>
+           <div class="col-lg-3">
+               <div class="panel panel-info">
+                   <div class="panel-heading">Earthquake</div>
+                   <!--TODO: Arreglar el panel y ponerlo como panel con lista-->
+                   <div class="panel-body">
+                       <ul class="list-group">
+                           <li class="list-group-item">Visualizando el contenido de su fichero "earthquake.txt"</li>
+                           <li class="list-group-item">Cada punto representa un terremoto recogido de su fichero.</li>
+                           <li class="list-group-item">El tamaño del punto indica su "peso logico".</li>
+                       </ul>
+                   </div>
+                   <div class="panel-footer">
+                       <a th:href="${'/kml_files/'+fileName}" class="btn btn-primary center-block">Descargar Kml</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" th:inline="javascript">
+        var ge;
+        google.load("earth", "1", {"other_params":"sensor=false"});
+
+        function init(){
+            google.earth.createInstance('map3d', initCB, failureCB);
+        }
+
+        function initCB(instance) {
+            /*<![CDATA[*/
+            ge = instance;
+            var fileName = /*[[${fileName}]]*/ "";
+            var link = ge.createLink('');
+            var href = 'http://'+window.location.host+'/kml_files/'+fileName;
+
+            link.setHref(href);
+
+            var networkLink = ge.createNetworkLink('');
+            networkLink.set(link, true, true);
+
+            ge.getFeatures().appendChild(networkLink);
+
+            ge.getWindow().setVisibility(true);
+            /*]]>*/
+        }
+
+        function failureCB(errCode){
+            console.log("Error al cargar el plugin de Google Earth:" + errCode);
+        }
+
+        google.setOnLoadCallback(init);
+    </script>
+</body>
+</html>
