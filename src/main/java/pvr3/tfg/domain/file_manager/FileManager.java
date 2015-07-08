@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +33,7 @@ public class FileManager {
         this.kml_file_name = name+dateFormat.format(date)+".kml";
     }
 
-    public void readAndConvertToKML(){
+    public String readAndConvertToKML(){
         ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
 
         try {
@@ -53,18 +54,23 @@ public class FileManager {
             }
             sc.close();
 
+
             if(!earthquakes.isEmpty()){
-                this.makeKML(earthquakes);
+                File f = this.makeKML(earthquakes);
+                AzureBlobManager abm = new AzureBlobManager();
+                URI uri = abm.putAtKmlAzureBlob(f, kml_file_name);
+                return uri.toString();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "";
     }
 
-    //Este metodo tiene la limitacion de que necesita el acceso al sistema de archivos del servidor.
-    private void makeKML(ArrayList<Earthquake> earthquakes) {
+    private File makeKML(ArrayList<Earthquake> earthquakes) {
         try {
-            PrintStream ps = new PrintStream(new File("src/main/resources/static/kml_files/"+this.kml_file_name));
+            File f = new File(this.kml_file_name);
+            PrintStream ps = new PrintStream(f);
             ps.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             ps.println("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
             ps.println("<Document>");
@@ -74,9 +80,11 @@ public class FileManager {
             ps.println("</Document>");
             ps.println("</kml>");
             ps.close();
+            return f;
         } catch (FileNotFoundException e) {
             System.err.println(e.toString());
         }
+        return null;
     }
 
     public String getKml_file_name() {

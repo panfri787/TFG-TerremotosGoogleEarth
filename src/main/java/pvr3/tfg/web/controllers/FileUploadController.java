@@ -31,8 +31,9 @@ public class FileUploadController {
                 InputStream stream = new ByteArrayInputStream(bytes);
 
                 FileManager fm = new FileManager(stream, name);
-                fm.readAndConvertToKML();
+                String uri = fm.readAndConvertToKML();
                 String kml_name = fm.getKml_file_name();
+                model.addAttribute("urlFile", uri);
                 return MapController.showMap(kml_name, "Earthquakes", model);
                 //return "upload";
             } catch (Exception e) {

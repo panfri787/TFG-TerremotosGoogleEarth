@@ -23,7 +23,7 @@
                        </ul>
                    </div>
                    <div class="panel-footer">
-                       <a th:href="${'/kml_files/'+fileName}" class="btn btn-primary center-block">Descargar Kml</a>
+                       <a th:href="${urlFile}" class="btn btn-primary center-block">Descargar Kml</a>
                    </div>
                </div>
            </div>
@@ -45,7 +45,8 @@
             ge = instance;
             var fileName = /*[[${fileName}]]*/ "";
             var link = ge.createLink('');
-            var href = 'http://'+window.location.host+'/kml_files/'+fileName;
+            var href = /*[[${urlFile}]]*/ "";
+            //var href = 'http://'+window.location.host+'/kml_files/'+fileName;
 
             link.setHref(href);
 
