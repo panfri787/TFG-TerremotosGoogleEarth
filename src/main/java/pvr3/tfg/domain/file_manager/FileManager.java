@@ -69,7 +69,7 @@ public class FileManager {
 
     private File makeKML(ArrayList<Earthquake> earthquakes) {
         try {
-            File f = new File(this.kml_file_name);
+            File f = new File("file.kml");
             PrintStream ps = new PrintStream(f);
             ps.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             ps.println("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
