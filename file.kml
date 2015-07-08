@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark> 
+    <Style>
+      <IconStyle>
+        <color>FF1400FF</color>
+        <scale>2.0</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Point>
+      <coordinates>44.819,25.581</coordinates>
+    </Point>
+</Placemark>
+<Placemark> 
+    <Style>
+      <IconStyle>
+        <color>FF1400FF</color>
+        <scale>2.0</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Point>
+      <coordinates>44.819,25.581</coordinates>
+    </Point>
+</Placemark>
+<Placemark> 
+    <Style>
+      <IconStyle>
+        <color>FF1400FF</color>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Point>
+      <coordinates>44.299,25.311</coordinates>
+    </Point>
+</Placemark>
+</Document>
+</kml>
