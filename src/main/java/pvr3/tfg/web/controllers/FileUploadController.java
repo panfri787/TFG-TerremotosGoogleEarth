@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pvr3.tfg.domain.file_manager.FileManager;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 
 /**
  * Created by Pablo on 04/07/2015.
@@ -30,13 +28,9 @@ public class FileUploadController {
         if (!fileUploaded.isEmpty()) {
             try {
                 byte[] bytes = fileUploaded.getBytes();
-                File file = new File("src/main/resources/uploaded_files/" +name);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
+                InputStream stream = new ByteArrayInputStream(bytes);
 
-                stream.write(bytes);
-                stream.close();
-
-                FileManager fm = new FileManager(file);
+                FileManager fm = new FileManager(stream, name);
                 fm.readAndConvertToKML();
                 String kml_name = fm.getKml_file_name();
                 return MapController.showMap(kml_name, "Earthquakes", model);

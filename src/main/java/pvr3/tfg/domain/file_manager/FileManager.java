@@ -5,6 +5,7 @@ import pvr3.tfg.domain.Earthquake;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,21 +22,21 @@ public class FileManager {
     /**
      * The txt file
      */
-    private File file;
+    private InputStream stream;
     private String kml_file_name;
 
-    public FileManager(File file){
-        this.file = file;
+    public FileManager(InputStream stream, String name){
+        this.stream = stream;
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        this.kml_file_name = this.file.getName()+dateFormat.format(date)+".kml";
+        this.kml_file_name = name+dateFormat.format(date)+".kml";
     }
 
     public void readAndConvertToKML(){
         ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
 
         try {
-            Scanner sc = new Scanner(this.file);
+            Scanner sc = new Scanner(this.stream);
 
             while(sc.hasNextLine()){
                 //Elimino las lineas comentadas del fichero.
@@ -60,6 +61,7 @@ public class FileManager {
         }
     }
 
+    //Este metodo tiene la limitacion de que necesita el acceso al sistema de archivos del servidor.
     private void makeKML(ArrayList<Earthquake> earthquakes) {
         try {
             PrintStream ps = new PrintStream(new File("src/main/resources/static/kml_files/"+this.kml_file_name));
