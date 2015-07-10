@@ -24,16 +24,57 @@ public class FileManager {
      * The txt file
      */
     private InputStream stream;
+    private ArrayList<InputStream> streams;
     private String kml_file_name;
+    private String conversion_type;
 
+    /**
+     * Constructor for one single File input.
+     * @param stream
+     * @param name
+     */
     public FileManager(InputStream stream, String name){
+        this.streams = null;
         this.stream = stream;
+        this.conversion_type = name;
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+        this.kml_file_name = name+dateFormat.format(date)+".kml";
+    }
+
+    /**
+     * Constructor for multiple File inputs
+     * @param streams
+     * @param name
+     */
+    public FileManager(ArrayList<InputStream> streams, String name){
+        this.stream = null;
+        this.streams = streams;
+        this.conversion_type = name;
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         this.kml_file_name = name+dateFormat.format(date)+".kml";
     }
 
     public String readAndConvertToKML(){
+        String url;
+        switch(this.conversion_type){
+            case "earthquake":
+                url = this.convertFromEarthQuake();
+                break;
+            case "soilcenter":
+                url ="";
+                break;
+
+            default:
+                url = "";
+                break;
+        }
+        return url;
+    }
+
+    //TODO: Posiblemente me interese refactorizar este metodo para adaptarlo a JAK
+    private String convertFromEarthQuake(){
         ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
 
         try {

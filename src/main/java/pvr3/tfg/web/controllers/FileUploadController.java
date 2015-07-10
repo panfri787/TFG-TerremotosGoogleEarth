@@ -16,12 +16,15 @@ import java.io.*;
 @Controller
 public class FileUploadController {
 
-    @RequestMapping(value="/upload", method = RequestMethod.GET)
-    public String provideUploadInfo(){
-        return "upload";
+    @RequestMapping(value="/upload-earthquake", method = RequestMethod.GET)
+    public String provideUploadEarthquakeInfo(){
+        return "upload-earthquake";
     }
 
-    @RequestMapping(value="/upload", method = RequestMethod.POST)
+    @RequestMapping(value="/upload-soilcenter", method = RequestMethod.GET)
+    public String provideUploadSoilcenterInfo() { return "upload-soilcenter"; }
+
+    @RequestMapping(value="/single-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file")MultipartFile fileUploaded,
                                    Model model) {

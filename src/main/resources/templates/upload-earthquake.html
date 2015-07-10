@@ -5,36 +5,35 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="../static/css/input_file.css" th:href="@{css/input_file.css}"/>
 
-    <title>File Upload</title>
+    <title>Carga Fichero Earthquake</title>
 </head>
 <body>
 
     <div class="container">
         <div class="row">
-            <h1>Earthquake upload</h1>
+            <h1>Carga Earthquake-</h1>
         </div>
         <br/>
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
-            <div class="jumbotron">
+            <div class="well">
                  <p>
                     Suba su fichero "earthquake.txt" y será redirigido a otra pagina que le mostrará
-                    el mapa de Google Earth, visualizando su información.
+                    el mapa de Google Earth, visualizando la información correspondiente.
                 </p>
             </div>
         </div>
         </div>
         <div class="row">
             <div class="col-lg-6 col-lg-offset-1 col-sm-6 col-12">
-                <!--TODO: Pensar una mejor forma de pasar el nombre del fichero-->
-                <form method="post" enctype="multipart/form-data" action="/upload?name=earthquake">
+                <form method="post" enctype="multipart/form-data" action="/single-upload?name=earthquake">
                     <label for="fileUpload">Seleccione su fichero "earthquake.txt":</label>
                     <div class="input-group form-group">
-                    <span class="input-group-btn">
-                        <span class="btn btn-info btn-file">
-                            Examinar&hellip; <input id="fileUpload" type="file" name="file"/>
+                        <span class="input-group-btn">
+                            <span class="btn btn-info btn-file">
+                                Examinar&hellip; <input id="fileUpload" type="file" name="file"/>
+                            </span>
                         </span>
-                    </span>
                         <input type="text" class="form-control" readonly="readonly" />
                     </div>
                     <div class="form-group">
