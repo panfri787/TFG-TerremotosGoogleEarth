@@ -15,7 +15,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * File management. The prinicipal propose of this class is read the "txt files" which were
+ * File management. The main propose of this class is read the "txt files" which were
  * uploaded to the website and convert it to "kml files" which can be load it on the Google Earth plugin
  */
 public class FileManager {
@@ -27,6 +27,7 @@ public class FileManager {
     private ArrayList<InputStream> streams;
     private String kml_file_name;
     private String conversion_type;
+    private String additionalData;
 
     /**
      * Constructor for one single File input.
@@ -35,6 +36,7 @@ public class FileManager {
      */
     public FileManager(InputStream stream, String name){
         this.streams = null;
+        this.additionalData = null;
         this.stream = stream;
         this.conversion_type = name;
         Date date = new Date();
@@ -51,6 +53,22 @@ public class FileManager {
         this.stream = null;
         this.streams = streams;
         this.conversion_type = name;
+        this.additionalData = null;
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+        this.kml_file_name = name+dateFormat.format(date)+".kml";
+    }
+
+    /**
+     * Constructor for multiple File inputs with additional data.
+     * @param streams
+     * @param name
+     */
+    public FileManager(ArrayList<InputStream> streams, String name, String additionalData){
+        this.stream = null;
+        this.streams = streams;
+        this.conversion_type = name;
+        this.additionalData = additionalData;
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         this.kml_file_name = name+dateFormat.format(date)+".kml";

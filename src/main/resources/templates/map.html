@@ -5,24 +5,23 @@
     <title th:text="${tittle}">Tittle</title>
 </head>
 <body>
+    <div th:replace="fragments/header :: header"/>
     <div class="container">
        <div class="row">
            <h1 th:text="${tittle}">Header</h1>
        </div>
        <div class="row">
-           <div class="col-lg-9" id="map3d" style="height:500px; width: 800px;"></div>
+           <div class="col-lg-9" id="map3d" style="height: 450px; width: 800px;"></div>
            <div class="col-lg-3">
                <div class="panel panel-info">
                    <div class="panel-heading">Earthquake</div>
-                   <div class="panel-body">
-                       <ul class="list-group">
-                           <li class="list-group-item">Visualizando el contenido de su fichero "earthquake.txt"</li>
-                           <li class="list-group-item">Cada punto representa un terremoto recogido de su fichero.</li>
-                           <li class="list-group-item">El tamaño del punto indica su "peso logico".</li>
-                       </ul>
-                   </div>
+                   <ul class="list-group">
+                       <li class="list-group-item">Visualizando el contenido de su fichero "earthquake.txt"</li>
+                       <li class="list-group-item">Cada punto representa un terremoto recogido de su fichero.</li>
+                       <li class="list-group-item">El tamaño del punto indica su "peso logico".</li>
+                   </ul>
                    <div class="panel-footer">
-                       <a th:href="${urlFile}" class="btn btn-primary center-block">Descargar Kml</a>
+                       <a th:href="${urlFile}" class="btn btn-primary center-block" download="download">Descargar Kml</a>
                    </div>
                </div>
            </div>

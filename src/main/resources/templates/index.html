@@ -1,82 +1,45 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Integracion Datos Riesgo Sismico con Google Earth</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
 
-
+    <title>Representacion de datos de riesgo sísmico en Google Earth</title>
 </head>
 <body>
-    <h2>Hola mundo!</h2>
-    <div id="map3d" style="height:600px; width: 800px;"></div>
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        var ge;
-        google.load("earth", "1", {"other_params":"sensor=false"});
-
-        function init(){
-            google.earth.createInstance('map3d', initCB, failureCB);
-        }
-
-        function initCB(instance) {
-            ge = instance;
-
-            var kmlString = ''
-                    + '<kml xmlns="http://www.opengis.net/kml/2.2">'
-
-                    + '<Document>'
-                    + '  <Camera>'
-                    + '    <longitude>44.8189</longitude>'
-                    + '    <latitude>25.2809</latitude>'
-                    + '    <altitude>2000000</altitude>'
-                    + '    <heading>0</heading>'
-                    + '    <tilt>0</tilt>'
-                    + '  </Camera>'
-                    + '  <Placemark>'
-                    + '    <Style>'
-                    + '     <IconStyle>'
-                    + '       <color>FF1400FF</color>'
-                    + '       <scale>2</scale>'
-                    + '       <Icon>'
-                    + '         <href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>'
-                    + '       </Icon>'
-                    + '     </IconStyle>'
-                    + '   </Style>'
-                    + '   <Point>'
-                    + '     <coordinates>44.819,25.281</coordinates>'
-                    + '  </Point>'
-                    + ' </Placemark>'
-
-                    + '  <Placemark>'
-                    + '    <Style>'
-                    + '     <IconStyle>'
-                    + '       <color>FF1400FF</color>'
-                    + '       <scale>1.2</scale>'
-                    + '       <Icon>'
-                    + '         <href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>'
-                    + '       </Icon>'
-                    + '     </IconStyle>'
-                    + '   </Style>'
-                    + '   <Point>'
-                    + '     <coordinates>44.299,25.311</coordinates>'
-                    + '  </Point>'
-                    + ' </Placemark>'
-
-                    + '</Document>'
-                    + '</kml>';
-
-            var kmlObject = ge.parseKml(kmlString);
-            ge.getFeatures().appendChild(kmlObject);
-
-            ge.getWindow().setVisibility(true);
-            ge.getView().setAbstractView(kmlObject.getAbstractView());
-        }
-
-        function failureCB(errCode){
-            console.log("Error al cargar el plugin de Google Earth:" + errCode);
-        }
-
-        google.setOnLoadCallback(init);
-
-    </script>
+    <div th:replace="fragments/header :: header"/>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Representacion de datos de riesgo sísmico en Google Earth</h1>
+                <br/>
+                <p>
+                    Esta herramienta se encarga de visualizar los ficheros de entrada y salida
+                    utilizados por la herramienta <a href="http://selena.sourceforge.net/">SELENA</a>
+                    en el entorno "Google Earth".
+                </p>  
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Ficheros de entrada</div>
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="/upload-earthquake">Earthquakes</a></li>
+                            <li class="list-group-item"><a href="/upload-soilcenter">Soilcenter</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">Ficheros de salida</div>
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="/upload-earthquake">Earthquakes</a></li>
+                            <li class="list-group-item"><a href="/upload-soilcenter">Soilcenter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div th:replace="fragments/footer :: footer"/>-->
 </body>
 </html>
