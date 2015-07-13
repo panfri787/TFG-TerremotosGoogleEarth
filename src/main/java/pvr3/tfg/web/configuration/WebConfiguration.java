@@ -15,27 +15,12 @@ public class WebConfiguration extends WebMvcConfigurerAdapter{
         configurer.enable();
     }
 
-    /*@Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/static/**")
-                .addResourceLocations("/resources/static/");
-    }*/
-
-    /*@Bean
-    public ViewResolver internalResourceViewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/pages/");
-        viewResolver.setSuffix(".html");
-
-        return viewResolver;
-    }*/
-
     @Bean
     public MultipartConfigElement multiPartConfigElement(){
         MultipartConfigFactory factory = new MultipartConfigFactory();
 
-        factory.setMaxFileSize("128KB");
-        factory.setMaxRequestSize("128KB");
+        factory.setMaxFileSize("1024KB");
+        factory.setMaxRequestSize("1024KB");
 
         return factory.createMultipartConfig();
     }

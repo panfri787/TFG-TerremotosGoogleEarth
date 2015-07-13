@@ -1,7 +1,12 @@
 package pvr3.tfg.domain.file_manager;
 
+import de.micromata.opengis.kml.v_2_2_0.Document;
+import de.micromata.opengis.kml.v_2_2_0.Folder;
+import de.micromata.opengis.kml.v_2_2_0.Kml;
+import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import pvr3.tfg.domain.Coordinate;
 import pvr3.tfg.domain.Earthquake;
+import pvr3.tfg.domain.SoilcenterFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -81,7 +86,7 @@ public class FileManager {
                 url = this.convertFromEarthQuake();
                 break;
             case "soilcenter":
-                url ="";
+                url = this.convertFromSoilCenter();
                 break;
 
             default:
@@ -89,6 +94,71 @@ public class FileManager {
                 break;
         }
         return url;
+    }
+
+    private String convertFromSoilCenter() {
+        ArrayList<SoilcenterFile> soilcenterFiles = new ArrayList<>();
+        Scanner scSoil = new Scanner(this.streams.get(0));
+        URI uri;
+        try {
+            while (scSoil.hasNextLine()) {
+                if (scSoil.hasNext(Pattern.compile("%.*"))) {
+                    scSoil.nextLine();
+                } else {
+                    String geounit = scSoil.next();
+                    scSoil.next();
+                    scSoil.next();
+                    int soilType = Integer.parseInt(scSoil.next());
+                    SoilcenterFile soilcenterFile = new SoilcenterFile(geounit, soilType);
+                    soilcenterFiles.add(soilcenterFile);
+                    scSoil.nextLine();
+                }
+            }
+            scSoil.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (!soilcenterFiles.isEmpty()) {
+            File f = this.modifyPolyTract(soilcenterFiles);
+            AzureBlobManager abm = new AzureBlobManager();
+            uri = abm.putAtKmlAzureBlob(f, kml_file_name);
+            return uri.toString();
+        }
+        return "";
+    }
+
+    private File modifyPolyTract(ArrayList<SoilcenterFile> soilcenterFiles) {
+        Kml polyTract = Kml.unmarshal(this.streams.get(1));
+        Document document = (Document)polyTract.getFeature().withName("PolyTract.kml");
+        Folder polyFolder = null;
+        File f = new File("file.kml");
+        for(int i=0; i<document.getFeature().size(); i++){
+            if(document.getFeature().get(i) instanceof Folder){
+                polyFolder = (Folder) document.getFeature().get(i);
+                break;
+            }
+        }
+        Folder soilFolder = new Folder().withName("soilcenter1");
+
+        for(int i = 0; i < polyFolder.getFeature().size() && i < soilcenterFiles.size(); i++){
+
+            if(polyFolder.getFeature().get(i) instanceof Placemark){
+                Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
+                if(placemark.getName().equals(soilcenterFiles.get(i).getGeounit())) {
+                    placemark.createAndAddStyle().withPolyStyle(soilcenterFiles.get(i).getKMLStyle());
+                    soilFolder.addToFeature(placemark);
+                }
+            }
+        }
+        polyTract.setFeature(soilFolder);
+        try {
+            polyTract.marshal(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return f;
     }
 
     //TODO: Posiblemente me interese refactorizar este metodo para adaptarlo a JAK
