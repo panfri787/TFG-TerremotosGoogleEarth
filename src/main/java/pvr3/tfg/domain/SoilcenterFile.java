@@ -20,7 +20,7 @@ public class SoilcenterFile {
     private String getColor() {
         switch (this.soilType){
             case 1:
-                return "6414B4FA";
+                return "641400F0";
             case 2:
                 return "64143C32";
             case 3:
@@ -40,5 +40,17 @@ public class SoilcenterFile {
 
     public String getGeounit() {
         return geounit;
+    }
+
+    public void setGeounit(String geounit) {
+        this.geounit = geounit;
+    }
+
+    public int getSoiltype() {
+        return soilType;
+    }
+
+    public void setSoiltype(int soiltype) {
+        this.soilType = soiltype;
     }
 }

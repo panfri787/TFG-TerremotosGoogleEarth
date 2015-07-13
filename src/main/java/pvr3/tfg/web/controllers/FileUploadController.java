@@ -39,7 +39,7 @@ public class FileUploadController {
                 String uri = fm.readAndConvertToKML();
                 String kml_name = fm.getKml_file_name();
                 model.addAttribute("urlFile", uri);
-                return MapController.showMap(kml_name, "Earthquakes", model);
+                return MapController.showMap(kml_name, name, model);
                 //return "upload";
             } catch (Exception e) {
                 return "error";
@@ -65,10 +65,14 @@ public class FileUploadController {
                     e.printStackTrace();
                 }
             }
+
             FileManager fm = new FileManager(streamList, name, additionalData);
             String uri = fm.readAndConvertToKML();
             String kml_name = fm.getKml_file_name();
             model.addAttribute("urlFile", uri);
+            if(!additionalData.isEmpty()){
+                model.addAttribute("additionalData", additionalData);
+            }
             return MapController.showMap(kml_name, name, model);
         } else {
             return "error";

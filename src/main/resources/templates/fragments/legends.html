@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+    <style>
+        .input-color {
+            position: relative;
+        }
+        .input-color input {
+            padding-left: 20px;
+        }
+        .input-color .color-box {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            background-color: #ccc;
+            position: absolute;
+            left: 5px;
+            top: 5px;
+        }
+    </style>
+</head>
+<body>
+<ul class="list-group" th:fragment="earthquake">
+    <li class="list-group-item">Visualizando el contenido de su fichero "earthquake.txt"</li>
+    <li class="list-group-item">Cada punto representa un terremoto recogido de su fichero.</li>
+    <li class="list-group-item">El tamaño del punto indica su "peso logico".</li>
+</ul>
+
+<!-- Soilcenter legends -->
+<ul class="list-group" th:fragment="soilcenter-nehrp">
+    <li class="list-group-item">Visualizando el contenido de su fichero "soilcenter.txt"</li>
+    <li class="list-group-item">Cada color representa un tipo de suelo segun la clasificacion (NEHRP):</li>
+    <li class="list-group-item">
+        <img src="../../static/img/nehrp-legend.jpg" th:src="@{img/nehrp-legend.jpg}" width="230px"/>
+    </li>
+</ul>
+
+<ul class="list-group" th:fragment="soilcenter-eurocode8">
+    <li class="list-group-item">Visualizando el contenido de su fichero "soilcenter.txt"</li>
+    <li class="list-group-item">Cada color representa un tipo de suelo segun la clasificacion (Eurocode 8):</li>
+    <li class="list-group-item">
+        <img src="../../static/img/eurocode8-legend.jpg" th:src="@{img/eurocode8-legend.jpg}" width="230px"/>
+    </li>
+</ul>
+
+<ul class="list-group" th:fragment="soilcenter-indian">
+    <li class="list-group-item">Visualizando el contenido de su fichero "soilcenter.txt"</li>
+    <li class="list-group-item">Cada color representa un tipo de suelo segun la clasificacion (Indian Standar IS 1983):</li>
+    <li class="list-group-item">
+        <img src="../../static/img/indian-legend.jpg" th:src="@{img/indian-legend.jpg}" width="230px"/>
+    </li>
+</ul>
+
+
+</body>
+</html>

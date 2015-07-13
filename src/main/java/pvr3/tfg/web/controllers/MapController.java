@@ -18,7 +18,14 @@ public class MapController {
                                  @RequestParam("tittle") String tittle,
                                  Model model){
         model.addAttribute("fileName", fileName);
-        model.addAttribute("tittle", tittle);
+        String legend = tittle;
+
+        if(model.containsAttribute("additionalData")){
+            legend= legend + "-" + model.asMap().get("additionalData");
+        }
+
+        model.addAttribute("legend", legend);
+        model.addAttribute("tittle", Character.toUpperCase(tittle.charAt(0)) + tittle.substring(1));
         return "map";
     }
 
