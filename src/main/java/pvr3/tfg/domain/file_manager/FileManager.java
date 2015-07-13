@@ -6,7 +6,7 @@ import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import pvr3.tfg.domain.Coordinate;
 import pvr3.tfg.domain.Earthquake;
-import pvr3.tfg.domain.SoilcenterFile;
+import pvr3.tfg.domain.Soilcenter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -97,7 +97,7 @@ public class FileManager {
     }
 
     private String convertFromSoilCenter() {
-        ArrayList<SoilcenterFile> soilcenterFiles = new ArrayList<>();
+        ArrayList<Soilcenter> soilcenters = new ArrayList<>();
         Scanner scSoil = new Scanner(this.streams.get(0));
         URI uri;
         try {
@@ -109,8 +109,8 @@ public class FileManager {
                     scSoil.next();
                     scSoil.next();
                     int soilType = Integer.parseInt(scSoil.next());
-                    SoilcenterFile soilcenterFile = new SoilcenterFile(geounit, soilType);
-                    soilcenterFiles.add(soilcenterFile);
+                    Soilcenter soilcenter = new Soilcenter(geounit, soilType);
+                    soilcenters.add(soilcenter);
                     scSoil.nextLine();
                 }
             }
@@ -119,8 +119,8 @@ public class FileManager {
             e.printStackTrace();
         }
 
-        if (!soilcenterFiles.isEmpty()) {
-            File f = this.modifyPolyTract(soilcenterFiles);
+        if (!soilcenters.isEmpty()) {
+            File f = this.modifyPolyTract(soilcenters);
             AzureBlobManager abm = new AzureBlobManager();
             uri = abm.putAtKmlAzureBlob(f, kml_file_name);
             return uri.toString();
@@ -128,7 +128,7 @@ public class FileManager {
         return "";
     }
 
-    private File modifyPolyTract(ArrayList<SoilcenterFile> soilcenterFiles) {
+    private File modifyPolyTract(ArrayList<Soilcenter> soilcenters) {
         Kml polyTract = Kml.unmarshal(this.streams.get(1));
         Document document = (Document)polyTract.getFeature().withName("PolyTract.kml");
         Folder polyFolder = null;
@@ -141,12 +141,12 @@ public class FileManager {
         }
         Folder soilFolder = new Folder().withName("soilcenter1");
 
-        for(int i = 0; i < polyFolder.getFeature().size() && i < soilcenterFiles.size(); i++){
+        for(int i = 0; i < polyFolder.getFeature().size() && i < soilcenters.size(); i++){
 
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(soilcenterFiles.get(i).getGeounit())) {
-                    placemark.createAndAddStyle().withPolyStyle(soilcenterFiles.get(i).getKMLStyle());
+                if(placemark.getName().equals(soilcenters.get(i).getGeounit())) {
+                    placemark.createAndAddStyle().withPolyStyle(soilcenters.get(i).getKMLStyle());
                     soilFolder.addToFeature(placemark);
                 }
             }

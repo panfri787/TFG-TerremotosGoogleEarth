@@ -3,25 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
-    <style>
-        .input-color {
-            position: relative;
-        }
-        .input-color input {
-            padding-left: 20px;
-        }
-        .input-color .color-box {
-            width: 10px;
-            height: 10px;
-            display: inline-block;
-            background-color: #ccc;
-            position: absolute;
-            left: 5px;
-            top: 5px;
-        }
-    </style>
 </head>
 <body>
+
+<!-- Earthquake legend -->
 <ul class="list-group" th:fragment="earthquake">
     <li class="list-group-item">Visualizando el contenido de su fichero "earthquake.txt"</li>
     <li class="list-group-item">Cada punto representa un terremoto recogido de su fichero.</li>

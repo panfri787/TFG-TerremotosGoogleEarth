@@ -7,12 +7,12 @@ import de.micromata.opengis.kml.v_2_2_0.PolyStyle;
 /**
  * Created by Pablo on 30/06/2015.
  */
-public class SoilcenterFile {
+public class Soilcenter {
     private String geounit;
 
     private int soilType;
 
-    public SoilcenterFile(String geounit, int soilType) {
+    public Soilcenter(String geounit, int soilType) {
         this.geounit = geounit;
         this.soilType = soilType;
     }
