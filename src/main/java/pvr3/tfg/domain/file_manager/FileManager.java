@@ -6,6 +6,7 @@ import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import pvr3.tfg.domain.Coordinate;
 import pvr3.tfg.domain.Earthquake;
+import pvr3.tfg.domain.Shakecenter;
 import pvr3.tfg.domain.Soilcenter;
 
 import java.io.File;
@@ -88,12 +89,49 @@ public class FileManager {
             case "soilcenter":
                 url = this.convertFromSoilCenter();
                 break;
+            case "shakecenter":
+                url = this.convertFromShakeCenter();
+                break;
 
             default:
                 url = "";
                 break;
         }
         return url;
+    }
+
+    private String convertFromShakeCenter() {
+        ArrayList<Shakecenter> shakecenters = new ArrayList<>();
+        Scanner sc = new Scanner(this.streams.get(0));
+        URI uri;
+        try{
+            while(sc.hasNextLine()){
+                if (sc.hasNext(Pattern.compile("%.*"))) {
+                    sc.nextLine();
+                } else {
+                    String geounit = sc.next();
+                    for(int i=0; i<4; i++)
+                        sc.next();
+                    float pga = Float.parseFloat(sc.next());
+                    float sa3 = Float.parseFloat(sc.next());
+                    float sa10 = Float.parseFloat(sc.next());
+                    Shakecenter shakecenter = new Shakecenter(geounit, pga, sa3, sa10);
+                    shakecenters.add(shakecenter);
+                    sc.nextLine();
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(!shakecenters.isEmpty()){
+            File f = Shakecenter.generateKmlFile(shakecenters, this.streams.get(1), this.additionalData);
+            AzureBlobManager abm = new AzureBlobManager();
+            uri = abm.putAtKmlAzureBlob(f, kml_file_name);
+            return uri.toString();
+        }
+
+        return "";
     }
 
     private String convertFromSoilCenter() {
@@ -120,45 +158,12 @@ public class FileManager {
         }
 
         if (!soilcenters.isEmpty()) {
-            File f = this.modifyPolyTract(soilcenters);
+            File f = Soilcenter.generateKmlFile(soilcenters, this.streams.get(1));
             AzureBlobManager abm = new AzureBlobManager();
             uri = abm.putAtKmlAzureBlob(f, kml_file_name);
             return uri.toString();
         }
         return "";
-    }
-
-    private File modifyPolyTract(ArrayList<Soilcenter> soilcenters) {
-        Kml polyTract = Kml.unmarshal(this.streams.get(1));
-        Document document = (Document)polyTract.getFeature().withName("PolyTract.kml");
-        Folder polyFolder = null;
-        File f = new File("file.kml");
-        for(int i=0; i<document.getFeature().size(); i++){
-            if(document.getFeature().get(i) instanceof Folder){
-                polyFolder = (Folder) document.getFeature().get(i);
-                break;
-            }
-        }
-        Folder soilFolder = new Folder().withName("soilcenter1");
-
-        for(int i = 0; i < polyFolder.getFeature().size() && i < soilcenters.size(); i++){
-
-            if(polyFolder.getFeature().get(i) instanceof Placemark){
-                Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(soilcenters.get(i).getGeounit())) {
-                    placemark.createAndAddStyle().withPolyStyle(soilcenters.get(i).getKMLStyle());
-                    soilFolder.addToFeature(placemark);
-                }
-            }
-        }
-        polyTract.setFeature(soilFolder);
-        try {
-            polyTract.marshal(f);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return f;
     }
 
     //TODO: Posiblemente me interese refactorizar este metodo para adaptarlo a JAK
@@ -182,7 +187,6 @@ public class FileManager {
                 }
             }
             sc.close();
-
 
             if(!earthquakes.isEmpty()){
                 File f = this.makeKML(earthquakes);

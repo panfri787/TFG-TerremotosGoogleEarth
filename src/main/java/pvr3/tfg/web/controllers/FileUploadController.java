@@ -26,6 +26,9 @@ public class FileUploadController {
     @RequestMapping(value="/upload-soilcenter", method = RequestMethod.GET)
     public String provideUploadSoilcenterInfo() { return "upload-soilcenter"; }
 
+    @RequestMapping(value="/upload-shakecenter", method = RequestMethod.GET)
+    public String provideUploadShakecenterInfo() { return "upload-shakecenter"; }
+
     @RequestMapping(value="/single-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file")MultipartFile fileUploaded,
