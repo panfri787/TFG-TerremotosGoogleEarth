@@ -126,6 +126,30 @@ public class FileManager {
 
         if(!shakecenters.isEmpty()){
             File f = Shakecenter.generateKmlFile(shakecenters, this.streams.get(1), this.additionalData);
+
+            //Logica para calcular la leyenda a mostrar
+            float biggest=-1;
+            switch(this.additionalData){
+                case "pga":
+                    biggest = Shakecenter.findBiggestPgaAcceleration(shakecenters);
+                    break;
+                case "sa3":
+                    biggest = Shakecenter.findBiggestSa3Acceleration(shakecenters);
+                    break;
+                case "sa10":
+                    biggest = Shakecenter.findBiggestSa10Acceleration(shakecenters);
+                    break;
+            }
+            if(biggest <= 0.3){
+                setAdditionalData(this.getAdditionalData() + "-1");
+            } else {
+                if(biggest > 0.3 && biggest <= 0.6){
+                    setAdditionalData(this.getAdditionalData() + "-2");
+                } else {
+                    setAdditionalData(this.getAdditionalData() + "-3");
+                }
+            }
+
             AzureBlobManager abm = new AzureBlobManager();
             uri = abm.putAtKmlAzureBlob(f, kml_file_name);
             return uri.toString();
@@ -222,5 +246,13 @@ public class FileManager {
 
     public String getKml_file_name() {
         return kml_file_name;
+    }
+
+    public String getAdditionalData() {
+        return additionalData;
+    }
+
+    public void setAdditionalData(String additionalData) {
+        this.additionalData = additionalData;
     }
 }

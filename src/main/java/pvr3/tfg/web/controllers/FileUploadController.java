@@ -73,7 +73,7 @@ public class FileUploadController {
             String kml_name = fm.getKml_file_name();
             model.addAttribute("urlFile", uri);
             if(!additionalData.isEmpty()){
-                model.addAttribute("additionalData", additionalData);
+                model.addAttribute("additionalData", fm.getAdditionalData());
             }
             return MapController.showMap(kml_name, name, model);
         } else {
