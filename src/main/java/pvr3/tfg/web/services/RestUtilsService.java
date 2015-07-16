@@ -1,4 +1,4 @@
-package pvr3.tfg.web.controllers;
+package pvr3.tfg.web.services;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +15,7 @@ import java.util.*;
  * Created by Pablo on 15/07/2015.
  */
 @RestController
-public class RestUtilsController {
+public class RestUtilsService {
 
     @RequestMapping(value = "/get-headers", method = RequestMethod.POST)
     public List<String> getHeadersOfFile(@RequestParam("file") MultipartFile file){

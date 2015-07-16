@@ -64,7 +64,7 @@ public class NumBuild {
                 break;
             }
         }
-        Folder soilFolder = new Folder().withName("numbuilds");
+        Folder soilFolder = new Folder().withName("numbuild");
 
         for(int i = 0; i < polyFolder.getFeature().size() && i < numBuilds.size(); i++){
 

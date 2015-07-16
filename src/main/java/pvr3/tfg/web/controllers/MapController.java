@@ -20,7 +20,7 @@ public class MapController {
         model.addAttribute("fileName", fileName);
         String legend = tittle;
 
-        if(model.containsAttribute("additionalData")){
+        if(model.containsAttribute("additionalData") && !model.asMap().get("additionalData").equals("")){
             legend= legend + "-" + model.asMap().get("additionalData");
         }
 

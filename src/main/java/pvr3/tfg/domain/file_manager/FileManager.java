@@ -128,6 +128,7 @@ public class FileManager {
                     numBuilds.add(numBuild);
                 }
             }
+            setAdditionalData("");
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -166,6 +167,7 @@ public class FileManager {
                     builtAreas.add(b);
                 }
             }
+            setAdditionalData("");
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -220,12 +222,12 @@ public class FileManager {
                     break;
             }
             if(biggest <= 0.3){
-                setAdditionalData(this.getAdditionalData() + "-1");
+                setAdditionalData("1");
             } else {
                 if(biggest > 0.3 && biggest <= 0.6){
-                    setAdditionalData(this.getAdditionalData() + "-2");
+                    setAdditionalData("2");
                 } else {
-                    setAdditionalData(this.getAdditionalData() + "-3");
+                    setAdditionalData("3");
                 }
             }
 
