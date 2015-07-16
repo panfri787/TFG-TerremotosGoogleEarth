@@ -35,6 +35,9 @@ public class FileUploadController {
     @RequestMapping(value="/upload-builtarea", method = RequestMethod.GET)
     public String provideUploadBuiltareaInfo() { return "upload-builtarea"; }
 
+    @RequestMapping(value="/upload-numbuild", method = RequestMethod.GET)
+    public String provideUploadNumbuildInfo() { return "upload-numbuild"; }
+
     @RequestMapping(value="/single-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file")MultipartFile fileUploaded,

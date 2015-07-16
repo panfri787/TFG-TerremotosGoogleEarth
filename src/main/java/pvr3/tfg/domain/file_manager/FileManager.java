@@ -93,12 +93,52 @@ public class FileManager {
             case "builtarea":
                 url = this.convertFromBuiltArea();
                 break;
-
+            case "numbuild":
+                url = this.convertFromNumbuild();
+                break;
             default:
                 url = "";
                 break;
         }
         return url;
+    }
+
+    private String convertFromNumbuild() {
+        ArrayList<NumBuild> numBuilds = new ArrayList<>();
+        Scanner sc = new Scanner(this.streams.get(0));
+        URI uri;
+        try{
+            while(sc.hasNextLine()){
+                if(sc.hasNext(Pattern.compile("%.*"))){
+                    sc.nextLine();
+                } else {
+                    String line = sc.nextLine();
+                    StringTokenizer t = new StringTokenizer(line);
+                    String geounit = t.nextToken();
+                    NumBuild numBuild = new NumBuild(geounit);
+                    for(int i=0; t.hasMoreTokens(); i++){
+                        float builds = Float.parseFloat(t.nextToken());
+                        if(t.hasMoreTokens()){
+                            numBuild.setTotalBuilds(numBuild.getTotalBuilds() + builds);
+                            if(i == Integer.parseInt(this.additionalData)){
+                                numBuild.setSelectedBuild(builds);
+                            }
+                        }
+                    }
+                    numBuilds.add(numBuild);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(!numBuilds.isEmpty()){
+            File f = NumBuild.generateKmlFile(numBuilds, this.streams.get(1));
+            AzureBlobManager abm = new AzureBlobManager();
+            uri = abm.putAtKmlAzureBlob(f, kml_file_name);
+            return uri.toString();
+        }
+        return "";
     }
 
     private String convertFromBuiltArea() {
@@ -123,9 +163,6 @@ public class FileManager {
                             }
                         }
                     }
-                    /*System.err.println(b.getSelectedBuiltArea());
-                    System.err.println(b.getTotalBuiltArea());
-                    System.err.println(b.getPercentageOfBuiltArea());*/
                     builtAreas.add(b);
                 }
             }
