@@ -1,4 +1,4 @@
-package pvr3.tfg.domain.file_manager;
+package pvr3.tfg.domain.file_managers;
 
 import com.microsoft.windowsazure.services.blob.client.*;
 import com.microsoft.windowsazure.services.core.storage.CloudStorageAccount;

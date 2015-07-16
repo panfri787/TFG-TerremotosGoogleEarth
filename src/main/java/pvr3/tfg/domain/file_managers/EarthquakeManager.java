@@ -1,4 +1,4 @@
-package pvr3.tfg.domain.file_manager;
+package pvr3.tfg.domain.file_managers;
 
 import pvr3.tfg.domain.Coordinate;
 import pvr3.tfg.domain.Earthquake;

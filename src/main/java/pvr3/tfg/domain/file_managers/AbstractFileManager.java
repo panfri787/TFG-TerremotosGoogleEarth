@@ -1,4 +1,4 @@
-package pvr3.tfg.domain.file_manager;
+package pvr3.tfg.domain.file_managers;
 
 import java.io.InputStream;
 import java.util.ArrayList;

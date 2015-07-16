@@ -1,4 +1,4 @@
-package pvr3.tfg.domain.file_manager;
+package pvr3.tfg.domain.file_managers;
 
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Folder;

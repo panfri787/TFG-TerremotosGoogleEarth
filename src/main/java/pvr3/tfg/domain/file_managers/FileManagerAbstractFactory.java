@@ -1,4 +1,4 @@
-package pvr3.tfg.domain.file_manager;
+package pvr3.tfg.domain.file_managers;
 
 
 import java.io.InputStream;
@@ -14,11 +14,10 @@ public class FileManagerAbstractFactory {
     /**
      * The txt file
      */
-    private InputStream stream;
     private ArrayList<InputStream> streams;
     private String kml_file_name;
     private String conversion_type;
-    private String additionalData;
+    private String []additionalData;
 
     /**
      * Constructor for multiple File inputs
@@ -26,7 +25,6 @@ public class FileManagerAbstractFactory {
      * @param name
      */
     public FileManagerAbstractFactory(ArrayList<InputStream> streams, String name){
-        this.stream = null;
         this.streams = streams;
         this.conversion_type = name;
         this.additionalData = null;
@@ -40,8 +38,7 @@ public class FileManagerAbstractFactory {
      * @param streams
      * @param name
      */
-    public FileManagerAbstractFactory(ArrayList<InputStream> streams, String name, String additionalData){
-        this.stream = null;
+    public FileManagerAbstractFactory(ArrayList<InputStream> streams, String name, String[] additionalData){
         this.streams = streams;
         this.conversion_type = name;
         this.additionalData = additionalData;
@@ -57,16 +54,16 @@ public class FileManagerAbstractFactory {
                 instance = new EarthquakeManager(this.streams.get(0),this.kml_file_name);
                 break;
             case "soilcenter":
-                instance = new SoilcenterManager(this.streams,this.kml_file_name,this.additionalData);
+                instance = new SoilcenterManager(this.streams,this.kml_file_name,this.additionalData[0]);
                 break;
             case "shakecenter":
-                instance = new ShakeCenterManager(this.streams,this.kml_file_name,this.additionalData);
+                instance = new ShakeCenterManager(this.streams,this.kml_file_name,this.additionalData[0]);
                 break;
             case "builtarea":
-                instance = new BuiltAreaManager(this.streams,this.kml_file_name,this.additionalData);
+                instance = new BuiltAreaManager(this.streams,this.kml_file_name,this.additionalData[0]);
                 break;
             case "numbuild":
-                instance = new NumBuildManager(this.streams,this.kml_file_name,this.additionalData);
+                instance = new NumBuildManager(this.streams,this.kml_file_name,this.additionalData[0]);
                 break;
             default:
                 //url = "";

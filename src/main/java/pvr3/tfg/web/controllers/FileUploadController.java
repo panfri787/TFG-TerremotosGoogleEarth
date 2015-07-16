@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import pvr3.tfg.domain.file_manager.FileManagerAbstractFactory;
-import pvr3.tfg.domain.file_manager.AbstractFileManager;
+import pvr3.tfg.domain.file_managers.FileManagerAbstractFactory;
+import pvr3.tfg.domain.file_managers.AbstractFileManager;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,35 +39,10 @@ public class FileUploadController {
     @RequestMapping(value="/upload-gmotionscene", method = RequestMethod.GET)
     public String provideGmotionsceneInfo() { return "upload-gmotionscene"; }
 
-    @RequestMapping(value="/single-upload", method = RequestMethod.POST)
-    public String handleFileUpload(@RequestParam("name") String name,
-                                   @RequestParam("file")MultipartFile fileUploaded,
-                                   Model model) {
-        ArrayList<InputStream> streamList = new ArrayList<>();
-        if (!fileUploaded.isEmpty()) {
-            try {
-                byte[] bytes = fileUploaded.getBytes();
-                InputStream stream = new ByteArrayInputStream(bytes);
-                streamList.add(stream);
-                FileManagerAbstractFactory factory = new FileManagerAbstractFactory(streamList, name);
-                AbstractFileManager afm = factory.getInstance();
-                String kml_name = afm.getKml_file_name();
-                String uri = afm.convertFromTextFile();
-                model.addAttribute("urlFile", uri);
-                return MapController.showMap(kml_name, name, model);
-            } catch (Exception e) {
-                return "error";
-            }
-        } else {
-            return "error";
-        }
-    }
-
     @RequestMapping(value="/multi-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file") MultipartFile[] files,
-                                   @RequestParam(value="additional-data", required = false) String additionalData,
-                                   @RequestParam(value="amplification-soil", required = false) String amplificationSoil,
+                                   @RequestParam(value="additional-data", required = false) String[] addtionalDataArray,
                                    Model model){
         ArrayList<InputStream> streamList = new ArrayList<>();
         if(files != null && files.length > 0){
@@ -81,7 +56,7 @@ public class FileUploadController {
                 }
             }
 
-            FileManagerAbstractFactory factory = new FileManagerAbstractFactory(streamList,name,additionalData);
+            FileManagerAbstractFactory factory = new FileManagerAbstractFactory(streamList,name,addtionalDataArray);
             AbstractFileManager afm = factory.getInstance();
             String uri = afm.convertFromTextFile();
             String kml_name = afm.getKml_file_name();
