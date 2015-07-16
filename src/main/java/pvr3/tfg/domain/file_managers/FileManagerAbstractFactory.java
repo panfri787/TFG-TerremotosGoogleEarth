@@ -65,6 +65,8 @@ public class FileManagerAbstractFactory {
             case "numbuild":
                 instance = new NumBuildManager(this.streams,this.kml_file_name,this.additionalData[0]);
                 break;
+            case "gmotionscen":
+                instance = new GMotionScenManager(this.streams,this.kml_file_name,this.additionalData);
             default:
                 //url = "";
                 break;

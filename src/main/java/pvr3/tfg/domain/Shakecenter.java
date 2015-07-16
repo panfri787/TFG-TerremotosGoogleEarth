@@ -203,24 +203,12 @@ public class Shakecenter {
         return pga;
     }
 
-    public void setPga(float pga) {
-        this.pga = pga;
-    }
-
     public float getSa_3() {
         return sa_3;
     }
 
-    public void setSa_3(float sa_3) {
-        this.sa_3 = sa_3;
-    }
-
     public float getSa_10() {
         return sa_10;
-    }
-
-    public void setSa_10(float sa_10) {
-        this.sa_10 = sa_10;
     }
 
 

@@ -5,13 +5,13 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="../static/css/input_file.css" th:href="@{css/input_file.css}"/>
 
-    <title>Carga Fichero GMotionScene</title>
+    <title>Carga Fichero GMotionscen</title>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="container">
     <div class="row">
-        <h1>Carga GMotionScene</h1>
+        <h1>Carga GMotionscen</h1>
     </div>
     <br/>
     <div class="row">
@@ -27,8 +27,8 @@
     </div>
     <div class="row">
         <div class="col-lg-6 col-lg-offset-1 col-sm-6 col-12">
-            <form method="post" enctype="multipart/form-data" action="/multi-upload?name=gmotionscene">
-                <label for="fileGmotionscene">Seleccione su fichero "gmotionscene.txt":</label>
+            <form method="post" enctype="multipart/form-data" action="/multi-upload?name=gmotionscen">
+                <label for="fileGmotionscene">Seleccione su fichero "gmotionscen.txt":</label>
                 <div class="input-group form-group">
                         <span class="input-group-btn">
                             <span class="btn btn-info btn-file">
@@ -47,18 +47,18 @@
                     <input type="text" class="form-control" readonly="readonly" />
                 </div>
                 <div class="form-group">
-                    <label for="amplification-soil">Amplificación suelo:</label>
-                    <select id="amplification-soil" name="classification-soil" class="form-control">
-                        <option value="rock">Rock</option>
-                        <option value="soil">Soil</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="clasification-type">Mapa de aceleración:</label>
                     <select id="clasification-type" name="additional-data" class="form-control">
                         <option value="pga">PGA</option>
                         <option value="sa3">Sa_3</option>
                         <option value="sa10">Sa_10</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amplification-soil">Amplificación suelo:</label>
+                    <select id="amplification-soil" name="additional-data" class="form-control">
+                        <option value="rock">Rock</option>
+                        <option value="soil">Soil</option>
                     </select>
                 </div>
                 <div class="form-group">
