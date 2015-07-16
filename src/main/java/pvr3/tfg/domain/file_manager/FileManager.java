@@ -4,10 +4,7 @@ import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Folder;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
-import pvr3.tfg.domain.Coordinate;
-import pvr3.tfg.domain.Earthquake;
-import pvr3.tfg.domain.Shakecenter;
-import pvr3.tfg.domain.Soilcenter;
+import pvr3.tfg.domain.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 /**
@@ -92,12 +90,56 @@ public class FileManager {
             case "shakecenter":
                 url = this.convertFromShakeCenter();
                 break;
+            case "builtarea":
+                url = this.convertFromBuiltArea();
+                break;
 
             default:
                 url = "";
                 break;
         }
         return url;
+    }
+
+    private String convertFromBuiltArea() {
+        ArrayList<BuiltArea> builtAreas = new ArrayList<>();
+        Scanner sc = new Scanner(this.streams.get(0));
+        URI uri;
+        try{
+            while(sc.hasNextLine()){
+                if(sc.hasNext(Pattern.compile("%.*"))){
+                    sc.nextLine();
+                } else {
+                    String line = sc.nextLine();
+                    StringTokenizer t = new StringTokenizer(line);
+                    String geounit = t.nextToken();
+                    BuiltArea b = new BuiltArea(geounit);
+                    for(int i=0; t.hasMoreTokens(); i++){
+                        float area = Float.parseFloat(t.nextToken());
+                        if(t.hasMoreTokens()){
+                            b.setTotalBuiltArea(b.getTotalBuiltArea()+ area);
+                            if(i == Integer.parseInt(this.additionalData)){
+                                b.setSelectedBuiltArea(area);
+                            }
+                        }
+                    }
+                    /*System.err.println(b.getSelectedBuiltArea());
+                    System.err.println(b.getTotalBuiltArea());
+                    System.err.println(b.getPercentageOfBuiltArea());*/
+                    builtAreas.add(b);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(!builtAreas.isEmpty()){
+            File f = BuiltArea.generateKmlFile(builtAreas, this.streams.get(1));
+            AzureBlobManager abm = new AzureBlobManager();
+            uri = abm.putAtKmlAzureBlob(f, kml_file_name);
+            return uri.toString();
+        }
+        return "";
     }
 
     private String convertFromShakeCenter() {

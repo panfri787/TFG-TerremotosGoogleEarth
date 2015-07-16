@@ -10,6 +10,9 @@ import pvr3.tfg.domain.file_manager.FileManager;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  * Created by Pablo on 04/07/2015.
@@ -28,6 +31,9 @@ public class FileUploadController {
 
     @RequestMapping(value="/upload-shakecenter", method = RequestMethod.GET)
     public String provideUploadShakecenterInfo() { return "upload-shakecenter"; }
+
+    @RequestMapping(value="/upload-builtarea", method = RequestMethod.GET)
+    public String provideUploadBuiltareaInfo() { return "upload-builtarea"; }
 
     @RequestMapping(value="/single-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
