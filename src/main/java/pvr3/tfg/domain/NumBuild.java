@@ -1,12 +1,6 @@
 package pvr3.tfg.domain;
 
 import de.micromata.opengis.kml.v_2_2_0.*;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.List;
-
 /**
  * Created by Pablo on 16/07/2015.
  */
@@ -51,39 +45,6 @@ public class NumBuild {
 
     public PolyStyle getKmlStyle(){
         return KmlFactory.createPolyStyle().withColor(this.getColorBuiltArea());
-    }
-
-    public static File generateKmlFile(List<NumBuild> numBuilds, InputStream polytractFile){
-        Kml polyTract = Kml.unmarshal(polytractFile);
-        Document document = (Document)polyTract.getFeature().withName("PolyTract.kml");
-        Folder polyFolder = null;
-        File f = new File("file.kml");
-        for(int i=0; i<document.getFeature().size(); i++){
-            if(document.getFeature().get(i) instanceof Folder){
-                polyFolder = (Folder) document.getFeature().get(i);
-                break;
-            }
-        }
-        Folder soilFolder = new Folder().withName("numbuild");
-
-        for(int i = 0; i < polyFolder.getFeature().size() && i < numBuilds.size(); i++){
-
-            if(polyFolder.getFeature().get(i) instanceof Placemark){
-                Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(numBuilds.get(i).getGeounit())) {
-                    placemark.createAndAddStyle().withPolyStyle(numBuilds.get(i).getKmlStyle());
-                    soilFolder.addToFeature(placemark);
-                }
-            }
-        }
-        polyTract.setFeature(soilFolder);
-        try {
-            polyTract.marshal(f);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return f;
     }
 
     public float getTotalBuilds() {

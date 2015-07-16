@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import pvr3.tfg.domain.file_manager.FileManager;
+import pvr3.tfg.domain.file_manager.FileManagerAbstractFactory;
+import pvr3.tfg.domain.file_manager.AbstractFileManager;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 /**
  * Created by Pablo on 04/07/2015.
@@ -38,18 +36,23 @@ public class FileUploadController {
     @RequestMapping(value="/upload-numbuild", method = RequestMethod.GET)
     public String provideUploadNumbuildInfo() { return "upload-numbuild"; }
 
+    @RequestMapping(value="/upload-gmotionscene", method = RequestMethod.GET)
+    public String provideGmotionsceneInfo() { return "upload-gmotionscene"; }
+
     @RequestMapping(value="/single-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file")MultipartFile fileUploaded,
                                    Model model) {
+        ArrayList<InputStream> streamList = new ArrayList<>();
         if (!fileUploaded.isEmpty()) {
             try {
                 byte[] bytes = fileUploaded.getBytes();
                 InputStream stream = new ByteArrayInputStream(bytes);
-
-                FileManager fm = new FileManager(stream, name);
-                String uri = fm.readAndConvertToKML();
-                String kml_name = fm.getKml_file_name();
+                streamList.add(stream);
+                FileManagerAbstractFactory factory = new FileManagerAbstractFactory(streamList, name);
+                AbstractFileManager afm = factory.getInstance();
+                String kml_name = afm.getKml_file_name();
+                String uri = afm.convertFromTextFile();
                 model.addAttribute("urlFile", uri);
                 return MapController.showMap(kml_name, name, model);
             } catch (Exception e) {
@@ -64,6 +67,7 @@ public class FileUploadController {
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file") MultipartFile[] files,
                                    @RequestParam(value="additional-data", required = false) String additionalData,
+                                   @RequestParam(value="amplification-soil", required = false) String amplificationSoil,
                                    Model model){
         ArrayList<InputStream> streamList = new ArrayList<>();
         if(files != null && files.length > 0){
@@ -77,12 +81,13 @@ public class FileUploadController {
                 }
             }
 
-            FileManager fm = new FileManager(streamList, name, additionalData);
-            String uri = fm.readAndConvertToKML();
-            String kml_name = fm.getKml_file_name();
+            FileManagerAbstractFactory factory = new FileManagerAbstractFactory(streamList,name,additionalData);
+            AbstractFileManager afm = factory.getInstance();
+            String uri = afm.convertFromTextFile();
+            String kml_name = afm.getKml_file_name();
             model.addAttribute("urlFile", uri);
-            if(!additionalData.isEmpty()){
-                model.addAttribute("additionalData", fm.getAdditionalData());
+            if(afm.getAdditionalData() != null && afm.getAdditionalData()!=""){
+                model.addAttribute("additionalData", afm.getAdditionalData());
             }
             return MapController.showMap(kml_name, name, model);
         } else {
