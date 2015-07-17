@@ -20,7 +20,7 @@ public class Population {
 
     public Placemark getKmlRepresentation(Coordinate coordinate, int maxPopulationVal) {
         Placemark placemark = new Placemark();
-        placemark.setName(getGeounit());
+        placemark.setName("Geounit: "+getGeounit()+", "+getTotalPopulation()+" personas");
         placemark.setStyleUrl("populationStyle");
         ArrayList<CoordinateKml> poligonCoordinates = this.calculateKmlCoordinates(coordinate, maxPopulationVal);
         Polygon bar = placemark.createAndSetPolygon();
@@ -47,7 +47,7 @@ public class Population {
         if(maxPopulationVal == 0){
             highUnit = 0.01;
         } else {
-            highUnit = maxPopulationVal/5000;
+            highUnit = maxPopulationVal/2500;
         }
 
         double factorReductionX = (step/50) * k;
