@@ -1,137 +1,130 @@
 package pvr3.tfg.domain;
 
+import de.micromata.opengis.kml.v_2_2_0.*;
+import de.micromata.opengis.kml.v_2_2_0.Polygon;
+
+import java.util.ArrayList;
+
 /**
  * Created by Pablo on 30/06/2015.
  */
 public class Population {
 
-    private int geounit;
+    private String geounit;
+    private int totalPopulation;
 
-    /**Total census tract population*/
-    private int pop;
+    public Population(String geounit, int totalPopulation) {
+        this.geounit = geounit;
+        this.totalPopulation = totalPopulation;
+    }
 
-    /**Daytime residential population inferred from census data*/
-    private int dres;
+    public Placemark getKmlRepresentation(Coordinate coordinate, int maxPopulationVal) {
+        Placemark placemark = new Placemark();
+        placemark.setName(getGeounit());
+        placemark.setStyleUrl("populationStyle");
+        ArrayList<CoordinateKml> poligonCoordinates = this.calculateKmlCoordinates(coordinate, maxPopulationVal);
+        Polygon bar = placemark.createAndSetPolygon();
+        bar.setAltitudeMode(AltitudeMode.RELATIVE_TO_GROUND);
+        bar.setExtrude(true);
+        Boundary boundary = new Boundary();
+        LinearRing linearRing = boundary.createAndSetLinearRing();
 
-    /**Nighttime residential population inferred from census data*/
-    private int nres;
+        for(CoordinateKml ck : poligonCoordinates){
+            linearRing.addToCoordinates(ck.getLongitude(),ck.getLatitude(),ck.getHigh());
+        }
 
-    /**Number of people employed in the comercial sector*/
-    private int comw;
+        bar.setOuterBoundaryIs(boundary);
 
-    /**Number of people employed in the industrial sector*/
-    private int indw;
+        return placemark;
+    }
 
-    /**Number of people commuting inferred from census data*/
-    private int comm;
+    public ArrayList<CoordinateKml> calculateKmlCoordinates(Coordinate coordinate, int maxPopulationVal){
+        double step = 0.02;
+        double stepX = step * 0.5;
+        double stepY = step;
+        int k = 3;
+        double highUnit;
+        if(maxPopulationVal == 0){
+            highUnit = 0.01;
+        } else {
+            highUnit = maxPopulationVal/5000;
+        }
 
-    /**Number of students in grade school (Usually <17 years)*/
-    private int grade;
+        double factorReductionX = (step/50) * k;
+        double factorReductionY = factorReductionX * 0.5;
 
-    /**Number of students on college and university campuses in the census tract (>17 years)*/
-    private int college;
+        if(coordinate.getLatitude() < 0){
+            factorReductionX = factorReductionX * -1;
+            stepX = stepX * -1;
+        }
+        if(coordinate.getLongitude() < 0){
+            factorReductionY = factorReductionY * -1;
+            stepY = stepY * -1;
+        }
 
-    /**Number of people staying in hotels in the census tract*/
-    private int hotel;
+        double high = 0;
+        if(getTotalPopulation() > 0){
+            high = getTotalPopulation()/highUnit;
+        }
 
-    /*TODO: Seria mejor representarlo como un enumerado
-      En la documentacion hablan de este valor como "(0.60 for dense urban areas, 0.80 for less dense urban or suburban
-      areas and 0.85 for rural)where the default value is 0.80"
-     */
-    /**Factor representing the proportion of commuters using automobiles inferred from profile of community*/
-    private float prfil;
+        ArrayList<CoordinateKml> coordinateKmlList = new ArrayList<>();
+        double x = 0,y = 0;
+        CoordinateKml originPoint = null;
 
-    /**Number of regional residents who do not live in the study area. Visiting the census tract for shopping and
-     * entertaiment (Default value 0)*/
-    private float visit;
+        for(int j=0;j<4;j++){
+            switch (j){
+                case 0:
+                    x = coordinate.getLatitude() - stepX - factorReductionX;
+                    y = coordinate.getLongitude();
+                    break;
+                case 1:
+                    x = coordinate.getLatitude();
+                    y = coordinate.getLongitude() + stepY + factorReductionY;
+                    break;
+                case 2:
+                    x = coordinate.getLatitude() + stepX + factorReductionX;
+                    y = coordinate.getLongitude();
+                    break;
+                case 3:
+                    x = coordinate.getLatitude();
+                    y = coordinate.getLongitude() - stepY - factorReductionY;
+                    break;
+            }
+            if(j == 0){
+                originPoint = new CoordinateKml(x,y,high);
+            }
+            coordinateKmlList.add(new CoordinateKml(x,y,high));
+        }
+        coordinateKmlList.add(originPoint);
 
-    public int getGeounit() {
+        return coordinateKmlList;
+    }
+
+    public static int getMaxPopulationValue(ArrayList<Population> poulations){
+        int maxVal = 0;
+
+        for(Population p : poulations){
+            if(p.getTotalPopulation() > maxVal){
+                maxVal = p.getTotalPopulation();
+            }
+        }
+
+        return maxVal;
+    }
+
+    public String getGeounit() {
         return geounit;
     }
 
-    public void setGeounit(int geounit) {
+    public void setGeounit(String geounit) {
         this.geounit = geounit;
     }
 
-    public int getPop() {
-        return pop;
+    public int getTotalPopulation() {
+        return totalPopulation;
     }
 
-    public void setPop(int pop) {
-        this.pop = pop;
-    }
-
-    public int getDres() {
-        return dres;
-    }
-
-    public void setDres(int dres) {
-        this.dres = dres;
-    }
-
-    public int getNres() {
-        return nres;
-    }
-
-    public void setNres(int nres) {
-        this.nres = nres;
-    }
-
-    public int getComw() {
-        return comw;
-    }
-
-    public void setComw(int comw) {
-        this.comw = comw;
-    }
-
-    public int getIndw() {
-        return indw;
-    }
-
-    public void setIndw(int indw) {
-        this.indw = indw;
-    }
-
-    public int getComm() {
-        return comm;
-    }
-
-    public void setComm(int comm) {
-        this.comm = comm;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-    public int getCollege() {
-        return college;
-    }
-
-    public void setCollege(int college) {
-        this.college = college;
-    }
-
-    public int getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(int hotel) {
-        this.hotel = hotel;
-    }
-
-    //TODO: Añadir metodos getter y setter para prfil cuando decida su representacion
-
-    public float getVisit() {
-        return visit;
-    }
-
-    public void setVisit(float visit) {
-        this.visit = visit;
+    public void setTotalPopulation(int totalPopulation) {
+        this.totalPopulation = totalPopulation;
     }
 }

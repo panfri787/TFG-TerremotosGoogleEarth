@@ -4,27 +4,32 @@ package pvr3.tfg.domain;
  * Created by Pablo on 30/06/2015.
  */
 public class Coordinate {
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
 
-    public Coordinate(float latitude, float longitude) {
+    public Coordinate(){
+        this.latitude=0;
+        this.longitude=0;
+    }
+
+    public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }

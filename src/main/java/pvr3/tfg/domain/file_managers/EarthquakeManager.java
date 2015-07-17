@@ -39,7 +39,7 @@ public class EarthquakeManager extends AbstractFileManager {
                 } else {
                     //Recojo los valores del fichero
                     Float weight_logic = Float.valueOf(sc.next());
-                    Coordinate coordinate = new Coordinate(Float.valueOf(sc.next()), Float.valueOf(sc.next()));
+                    Coordinate coordinate = new Coordinate(Double.valueOf(sc.next()), Double.valueOf(sc.next()));
                     Earthquake earthquake = new Earthquake(weight_logic, coordinate);
                     earthquakes.add(earthquake);
                     sc.nextLine();

@@ -9,7 +9,7 @@ import java.util.Date;
  * File management. The main propose of this class is read the "txt files" which were
  * uploaded to the website and convert it to "kml files" which can be load it on the Google Earth plugin
  */
-public class FileManagerAbstractFactory {
+public class FileManagerFactory {
 
     /**
      * The txt file
@@ -24,7 +24,7 @@ public class FileManagerAbstractFactory {
      * @param streams
      * @param name
      */
-    public FileManagerAbstractFactory(ArrayList<InputStream> streams, String name){
+    public FileManagerFactory(ArrayList<InputStream> streams, String name){
         this.streams = streams;
         this.conversion_type = name;
         this.additionalData = null;
@@ -38,7 +38,7 @@ public class FileManagerAbstractFactory {
      * @param streams
      * @param name
      */
-    public FileManagerAbstractFactory(ArrayList<InputStream> streams, String name, String[] additionalData){
+    public FileManagerFactory(ArrayList<InputStream> streams, String name, String[] additionalData){
         this.streams = streams;
         this.conversion_type = name;
         this.additionalData = additionalData;
@@ -67,6 +67,10 @@ public class FileManagerAbstractFactory {
                 break;
             case "gmotionscen":
                 instance = new GMotionScenManager(this.streams,this.kml_file_name,this.additionalData);
+                break;
+            case "population":
+                instance = new PopulationManager(this.streams,this.kml_file_name);
+                break;
             default:
                 //url = "";
                 break;

@@ -58,7 +58,7 @@ public class Earthquake {
                 "      </IconStyle>\n" +
                 "    </Style>\n" +
                 "    <Point>\n" +
-                "      <coordinates>"+ this.getCoordinate().getLatitude() +","+ this.getCoordinate().getLongitude() +"</coordinates>\n" +
+                "      <coordinates>"+ this.getCoordinate().getLongitude() +","+ this.getCoordinate().getLatitude() +"</coordinates>\n" +
                 "    </Point>\n" +
                 "</Placemark>";
 

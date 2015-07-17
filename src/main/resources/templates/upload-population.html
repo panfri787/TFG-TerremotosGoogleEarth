@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../static/css/input_file.css" th:href="@{css/input_file.css}"/>
+
+    <title>Carga Fichero Population</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <div class="row">
+        <h1>Carga Population</h1>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="well">
+                <p>
+                    Suba sus ficheros "population.txt" y "CentroidTract.kml" y será redirigido
+                    a otra pagina que le mostrará el mapa de Google Earth, visualizando la
+                    información correspondiente.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-1 col-sm-6 col-12">
+            <form method="post" enctype="multipart/form-data" action="/multi-upload?name=population">
+                <label for="filePopulation">Seleccione su fichero "population.txt":</label>
+                <div class="input-group form-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-info btn-file">
+                                Examinar&hellip; <input id="filePopulation" type="file" name="file"/>
+                            </span>
+                        </span>
+                    <input type="text" class="form-control" readonly="readonly" />
+                </div>
+                <label for="fileCentroidTract">Seleccione su fichero "CentroidTract.kml":</label>
+                <div class="input-group form-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-info btn-file">
+                                Examinar&hellip; <input id="fileCentroidTract" type="file" name="file"/>
+                            </span>
+                        </span>
+                    <input type="text" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Enviar"/>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!--<div th:replace="fragments/footer :: footer"/>-->
+</div>
+
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" th:src="@{//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js}"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js" th:src="@{//code.jquery.com/jquery-1.11.0.min.js}"></script>
+<script src="../static/js/input_file.js" th:src="@{js/input_file.js}"></script>
+</body>
+</html>

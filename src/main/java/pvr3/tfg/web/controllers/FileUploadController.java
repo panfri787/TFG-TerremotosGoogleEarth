@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import pvr3.tfg.domain.file_managers.FileManagerAbstractFactory;
+import pvr3.tfg.domain.file_managers.FileManagerFactory;
 import pvr3.tfg.domain.file_managers.AbstractFileManager;
 
 import java.io.*;
@@ -39,6 +39,9 @@ public class FileUploadController {
     @RequestMapping(value="/upload-gmotionscen", method = RequestMethod.GET)
     public String provideGmotionsceneInfo() { return "upload-gmotionscen"; }
 
+    @RequestMapping(value="/upload-population", method = RequestMethod.GET)
+    public String providePopulationInfo() { return "upload-population"; }
+
     @RequestMapping(value="/multi-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file") MultipartFile[] files,
@@ -56,7 +59,7 @@ public class FileUploadController {
                 }
             }
 
-            FileManagerAbstractFactory factory = new FileManagerAbstractFactory(streamList,name,addtionalDataArray);
+            FileManagerFactory factory = new FileManagerFactory(streamList,name,addtionalDataArray);
             AbstractFileManager afm = factory.getInstance();
             String uri = afm.convertFromTextFile();
             String kml_name = afm.getKml_file_name();
