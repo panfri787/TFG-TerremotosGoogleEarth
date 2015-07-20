@@ -42,6 +42,9 @@ public class FileUploadController {
     @RequestMapping(value="/upload-population", method = RequestMethod.GET)
     public String providePopulationInfo() { return "upload-population"; }
 
+    @RequestMapping(value="/upload-medianct", method = RequestMethod.GET)
+    public String provideMedianctInfo() { return "upload-medianct"; }
+
     @RequestMapping(value="/multi-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file") MultipartFile[] files,
