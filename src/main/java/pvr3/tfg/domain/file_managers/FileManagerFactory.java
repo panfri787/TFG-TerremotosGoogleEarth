@@ -72,7 +72,13 @@ public class FileManagerFactory {
                 instance = new PopulationManager(this.streams,this.kml_file_name);
                 break;
             case "medianct":
-                instance = new MedianctManager(this.streams, this.kml_file_name, this.additionalData[0]);
+                instance = new DamageAbsoluteManager(this.streams, this.kml_file_name, this.additionalData[0], this.conversion_type);
+                break;
+            case "16prctilect":
+                instance = new DamageAbsoluteManager(this.streams, this.kml_file_name, this.additionalData[0], this.conversion_type);
+                break;
+            case "84prctilect":
+                instance = new DamageAbsoluteManager(this.streams, this.kml_file_name, this.additionalData[0], this.conversion_type);
                 break;
             default:
                 //url = "";

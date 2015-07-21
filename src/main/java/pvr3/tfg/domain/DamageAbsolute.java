@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Pablo on 20/07/2015.
  */
-public class Medianct {
+public class DamageAbsolute {
     private String geounit;
     private int none;
     private int slight;
@@ -20,7 +20,7 @@ public class Medianct {
     private int complete;
     private double highAcumulated;
 
-    public Medianct(String geounit, int none, int slight, int moderate, int extensive, int complete) {
+    public DamageAbsolute(String geounit, int none, int slight, int moderate, int extensive, int complete) {
         this.geounit = geounit;
         this.none = none;
         this.slight = slight;
@@ -144,9 +144,9 @@ public class Medianct {
         return coordinateKmlList;
     }
 
-    public static int getMaxValueFromList(ArrayList<Medianct> mediancts){
+    public static int getMaxValueFromList(ArrayList<DamageAbsolute> damageAbsolutes){
         int maxValue = 0;
-        for(Medianct m : mediancts){
+        for(DamageAbsolute m : damageAbsolutes){
             if(m.getMaxValue() > maxValue){
                 maxValue = m.getMaxValue();
             }
