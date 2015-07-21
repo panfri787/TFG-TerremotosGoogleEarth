@@ -71,6 +71,9 @@ public class FileManagerFactory {
             case "population":
                 instance = new PopulationManager(this.streams,this.kml_file_name);
                 break;
+            case "medianct":
+                instance = new MedianctManager(this.streams, this.kml_file_name, this.additionalData[0]);
+                break;
             default:
                 //url = "";
                 break;

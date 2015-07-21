@@ -39,7 +39,7 @@ public class Population {
     }
 
     public ArrayList<CoordinateKml> calculateKmlCoordinates(Coordinate coordinate, int maxPopulationVal){
-        double step = 0.02;
+        double step = 0.002;
         double stepX = step * 0.5;
         double stepY = step;
         int k = 3;

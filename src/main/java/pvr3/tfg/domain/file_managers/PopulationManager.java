@@ -55,7 +55,7 @@ public class PopulationManager extends AbstractFileManager {
     }
 
     private File generateKmlFile(ArrayList<Population> populations, InputStream centroidFileStream){
-        HashMap<String, Coordinate> centroids = getCoordinatesFromCentroidFile(centroidFileStream);
+        HashMap<String, Coordinate> centroids = super.getCoordinatesFromCentroidFile(centroidFileStream);
         File f = new File("file.kml");
         Kml kmlFile = new Kml();
         Document doc = kmlFile.createAndSetDocument().withName("population.kml").withOpen(true);
@@ -78,30 +78,4 @@ public class PopulationManager extends AbstractFileManager {
 
         return f;
     }
-
-    private HashMap<String,Coordinate> getCoordinatesFromCentroidFile(InputStream centroidFileStream){
-        HashMap<String,Coordinate> coordinates = new HashMap<>();
-        Kml centroidKml = Kml.unmarshal(centroidFileStream);
-        Document document = (Document)centroidKml.getFeature().withName("CentroidTract.kml");
-        Folder centroidFolder = new Folder();
-        for(int i=0; i<document.getFeature().size(); i++){
-            if(document.getFeature().get(i) instanceof Folder){
-                centroidFolder = (Folder) document.getFeature().get(i);
-                break;
-            }
-        }
-
-        for(int i = 0; i < centroidFolder.getFeature().size(); i++){
-
-            if(centroidFolder.getFeature().get(i) instanceof Placemark){
-                Placemark placemark = (Placemark) centroidFolder.getFeature().get(i);
-                Point point = (Point)placemark.getGeometry();
-                Coordinate coordinate = new Coordinate((float)point.getCoordinates().get(0).getLatitude(),
-                        (float)point.getCoordinates().get(0).getLongitude());
-                coordinates.put(placemark.getName(),coordinate);
-            }
-        }
-        return coordinates;
-    }
-
 }
