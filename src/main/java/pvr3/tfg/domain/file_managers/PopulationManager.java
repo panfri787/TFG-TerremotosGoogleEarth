@@ -37,7 +37,9 @@ public class PopulationManager extends AbstractFileManager {
                     int value = Integer.parseInt(sc.next());
                     Population p = new Population(geounit,value);
                     populations.add(p);
-                    sc.nextLine();
+                    if(sc.hasNextLine()){
+                        sc.nextLine();
+                    }
                 }
             }
         } catch (Exception e){

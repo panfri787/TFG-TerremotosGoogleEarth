@@ -42,8 +42,8 @@ public class FileUploadController {
     @RequestMapping(value="/upload-population", method = RequestMethod.GET)
     public String providePopulationInfo() { return "upload-population"; }
 
-    @RequestMapping(value="/upload-medianct", method = RequestMethod.GET)
-    public String provideMedianctInfo() { return "upload-medianct"; }
+    @RequestMapping(value="/upload-damage-absolute", method = RequestMethod.GET)
+    public String provideMedianctInfo() { return "upload-damage-absolute"; }
 
     @RequestMapping(value="/upload-16prctilect", method = RequestMethod.GET)
     public String provide16prctilectInfo() { return "upload-16prctilect"; }

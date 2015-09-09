@@ -86,10 +86,11 @@ public class DamageAbsolute {
         double stepX = step * 0.5;
         double stepY = step;
         double highUnit;
+        System.out.println("Max Value:" + maxValue);
         if(maxValue <= 0){
             highUnit = 0.01;
         } else {
-            highUnit = maxValue/2500;
+            highUnit = maxValue/2500d;
         }
 
         double factorReductionX = (step/50) * iDec;
@@ -108,8 +109,9 @@ public class DamageAbsolute {
             value = 0;
         }
 
-        setHighAcumulated(getHighAcumulated()+(value/highUnit));
-        double high = getHighAcumulated();
+        double nextHigh = this.getHighAcumulated() + value/highUnit;
+        this.setHighAcumulated(nextHigh);
+        double high = this.getHighAcumulated();
 
         ArrayList<CoordinateKml> coordinateKmlList = new ArrayList<>();
         double x = 0,y = 0;

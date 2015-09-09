@@ -47,7 +47,7 @@ public class Population {
         if(maxPopulationVal == 0){
             highUnit = 0.01;
         } else {
-            highUnit = maxPopulationVal/2500;
+            highUnit = maxPopulationVal/2500d;
         }
 
         double factorReductionX = (step/50) * k;
