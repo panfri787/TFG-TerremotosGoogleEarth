@@ -86,7 +86,7 @@ public class DamageAbsolute {
         double stepX = step * 0.5;
         double stepY = step;
         double highUnit;
-        System.out.println("Max Value:" + maxValue);
+
         if(maxValue <= 0){
             highUnit = 0.01;
         } else {

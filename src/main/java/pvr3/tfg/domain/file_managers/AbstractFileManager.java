@@ -34,7 +34,11 @@ public abstract class AbstractFileManager {
                 Point point = (Point)placemark.getGeometry();
                 Coordinate coordinate = new Coordinate((float)point.getCoordinates().get(0).getLatitude(),
                         (float)point.getCoordinates().get(0).getLongitude());
-                coordinates.put(placemark.getName(),coordinate);
+                if(placemark.getId()!= null && !placemark.getId().equals(placemark.getName())){
+                    coordinates.put(placemark.getId(), coordinate);
+                } else {
+                    coordinates.put(placemark.getName(),coordinate);
+                }
             }
         }
         return coordinates;
