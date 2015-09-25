@@ -18,7 +18,7 @@ public abstract class AbstractFileManager {
     protected HashMap<String,Coordinate> getCoordinatesFromCentroidFile(InputStream centroidFileStream){
         HashMap<String,Coordinate> coordinates = new HashMap<>();
         Kml centroidKml = Kml.unmarshal(centroidFileStream);
-        Document document = (Document)centroidKml.getFeature().withName("CentroidTract.kml");
+        Document document = (Document)centroidKml.getFeature();
         Folder centroidFolder = new Folder();
         for(int i=0; i<document.getFeature().size(); i++){
             if(document.getFeature().get(i) instanceof Folder){
