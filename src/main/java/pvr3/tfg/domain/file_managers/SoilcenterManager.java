@@ -61,7 +61,7 @@ public class SoilcenterManager extends AbstractFileManager {
 
     public File generateKmlFile(List<Soilcenter> soilcenters, InputStream polytractFile){
         Kml polyTract = Kml.unmarshal(polytractFile);
-        Document document = (Document)polyTract.getFeature().withName("PolyTract.kml");
+        Document document = (Document)polyTract.getFeature();
         Folder polyFolder = null;
         File f = new File("file.kml");
         for(int i=0; i<document.getFeature().size(); i++){
@@ -76,7 +76,8 @@ public class SoilcenterManager extends AbstractFileManager {
 
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(soilcenters.get(i).getGeounit())) {
+                if(placemark.getName().equals(soilcenters.get(i).getGeounit()) ||
+                        placemark.getId().equals(soilcenters.get(i).getGeounit())) {
                     placemark.createAndAddStyle().withPolyStyle(soilcenters.get(i).getKMLStyle());
                     soilFolder.addToFeature(placemark);
                 }

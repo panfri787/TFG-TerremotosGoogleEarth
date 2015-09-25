@@ -96,7 +96,7 @@ public class GMotionScenManager extends AbstractFileManager {
 
     public File generateKmlFile(ArrayList<GMotionScen> gmotionscenes, InputStream polytractFile) {
         Kml polyTract = Kml.unmarshal(polytractFile);
-        Document document = (Document)polyTract.getFeature().withName("PolyTract.kml");
+        Document document = (Document)polyTract.getFeature();
         Folder polyFolder = null;
         File f = new File("file.kml");
 
@@ -112,7 +112,8 @@ public class GMotionScenManager extends AbstractFileManager {
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
                 float biggest;
-                if(placemark.getName().equals(gmotionscenes.get(i).getGeounit())) {
+                if(placemark.getName().equals(gmotionscenes.get(i).getGeounit()) ||
+                        placemark.getId().equals(gmotionscenes.get(i).getGeounit())) {
                     switch(this.additionalDataArray[0]){
                         case "pga":
                             biggest = GMotionScen.findBiggestPgaAcceleration(gmotionscenes);

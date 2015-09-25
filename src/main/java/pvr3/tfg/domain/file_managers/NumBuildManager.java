@@ -74,7 +74,7 @@ public class NumBuildManager extends AbstractFileManager {
 
     public File generateKmlFile(List<NumBuild> numBuilds, InputStream polytractFile){
         Kml polyTract = Kml.unmarshal(polytractFile);
-        Document document = (Document)polyTract.getFeature().withName("PolyTract.kml");
+        Document document = (Document)polyTract.getFeature();
         Folder polyFolder = null;
         File f = new File("file.kml");
         for(int i=0; i<document.getFeature().size(); i++){
@@ -89,7 +89,8 @@ public class NumBuildManager extends AbstractFileManager {
 
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(numBuilds.get(i).getGeounit())) {
+                if(placemark.getName().equals(numBuilds.get(i).getGeounit()) ||
+                        placemark.getId().equals(numBuilds.get(i).getGeounit())) {
                     placemark.createAndAddStyle().withPolyStyle(numBuilds.get(i).getKmlStyle());
                     soilFolder.addToFeature(placemark);
                 }
