@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../static/css/input_file.css" th:href="@{css/input_file.css}"/>
+
+    <title>Carga Fichero Dout</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <div class="row">
+        <h1>Carga Dout</h1>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="well">
+                <p id="info">
+                    Suba sus ficheros "dout.txt" y "CentroidTract.kml" y será redirigido
+                    a otra pagina que le mostrará el mapa de Google Earth, visualizando la
+                    información correspondiente.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-1 col-sm-6 col-12">
+            <form id="form" method="post" enctype="multipart/form-data" action="/multi-upload?name=dout">
+                <div id="dinamicInput">
+                    <label for="filedout">Seleccione su fichero "dout.txt":</label>
+                    <div class="input-group form-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-info btn-file">
+                                    Examinar&hellip; <input id="filedout" type="file" name="file"/>
+                                </span>
+                            </span>
+                        <input type="text" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+                <label for="fileCentroidTract">Seleccione su fichero "CentroidTract.kml":</label>
+                <div class="input-group form-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-info btn-file">
+                                Examinar&hellip; <input id="fileCentroidTract" type="file" name="file"/>
+                            </span>
+                        </span>
+                    <input type="text" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label for="construction-type">Tipo de construcción:</label>
+                    <select id="construction-type" name="additional-data" class="form-control">
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Enviar"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--<div th:replace="fragments/footer :: footer"/>-->
+</div>
+
+<script type="application/javascript">
+    // <![CDATA[
+    document.getElementById("filedout").onchange = function(){
+        req = new XMLHttpRequest();
+        req.open('POST', '/get-headers/building-damage', false);
+        var formData = new FormData();
+        formData.append("file", document.getElementById("filedout").files[0]);
+
+        req.send(formData)
+        if(req.status == 200){
+            var list = JSON.parse(req.responseText);
+            select = document.getElementById("construction-type");
+            for(i=0; i < list.length; i++){
+                option = document.createElement('option')
+                option.value = i;
+                option.innerHTML = list[i];
+                select.appendChild(option);
+            }
+        }
+    }
+    // ]]>
+</script>
+
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" th:src="@{//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js}"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js" th:src="@{//code.jquery.com/jquery-1.11.0.min.js}"></script>
+<script src="../static/js/input_file.js" th:src="@{js/input_file.js}"></script>
+</body>
+</html>

@@ -51,6 +51,9 @@ public class FileUploadController {
     @RequestMapping(value="/upload-84prctilect", method = RequestMethod.GET)
     public String provide84prctilectInfo() { return "upload-84prctilect"; }
 
+    @RequestMapping(value="/upload-dout", method = RequestMethod.GET)
+    public String provideDoutInfo() { return "upload-dout"; }
+
     @RequestMapping(value="/multi-upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file") MultipartFile[] files,

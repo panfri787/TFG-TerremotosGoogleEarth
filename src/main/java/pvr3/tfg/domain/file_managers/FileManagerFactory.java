@@ -80,6 +80,8 @@ public class FileManagerFactory {
             case "84prctilect":
                 instance = new DamageAbsoluteManager(this.streams, this.kml_file_name, this.additionalData[0], this.conversion_type);
                 break;
+            case "dout":
+                instance = new DamageProbabilityManager(this.streams, this.kml_file_name, this.additionalData[0]);
             default:
                 //url = "";
                 break;
