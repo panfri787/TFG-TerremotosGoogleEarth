@@ -76,8 +76,8 @@ public class SoilcenterManager extends AbstractFileManager {
 
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(soilcenters.get(i).getGeounit()) ||
-                        placemark.getId().equals(soilcenters.get(i).getGeounit())) {
+                if((placemark.getName() != null && placemark.getName().equals(soilcenters.get(i).getGeounit())) ||
+                        (placemark.getId() != null && placemark.getId().equals(soilcenters.get(i).getGeounit()))) {
                     placemark.createAndAddStyle().withPolyStyle(soilcenters.get(i).getKMLStyle());
                     soilFolder.addToFeature(placemark);
                 }

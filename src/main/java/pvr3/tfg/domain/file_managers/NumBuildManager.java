@@ -89,8 +89,8 @@ public class NumBuildManager extends AbstractFileManager {
 
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(numBuilds.get(i).getGeounit()) ||
-                        placemark.getId().equals(numBuilds.get(i).getGeounit())) {
+                if((placemark.getName() != null && placemark.getName().equals(numBuilds.get(i).getGeounit())) ||
+                        (placemark.getId() != null && placemark.getId().equals(numBuilds.get(i).getGeounit()))) {
                     placemark.createAndAddStyle().withPolyStyle(numBuilds.get(i).getKmlStyle());
                     soilFolder.addToFeature(placemark);
                 }

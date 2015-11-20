@@ -1,551 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
-    <Document>
-        <name>dout.kml</name>
-        <open>1</open>
-        <Folder>
-            <name>dout</name>
-            <open>1</open>
-            <Placemark>
-                <name>Geounit:1, None:100%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff66ff99</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.06403923034668,44.47984858398438,5000.0 26.06613923034668,44.481048583984375,5000.0 26.06403923034668,44.48224858398437,5000.0 26.06193923034668,44.481048583984375,5000.0 26.06403923034668,44.47984858398438,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:1, Slight:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffffcc00</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.06403923034668,44.479888583984376,5000.0 26.06611923034668,44.481048583984375,5000.0 26.06403923034668,44.482208583984374,5000.0 26.06195923034668,44.481048583984375,5000.0 26.06403923034668,44.479888583984376,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:1, Moderate:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffcc3300</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.06403923034668,44.479928583984375,5000.0 26.06609923034668,44.481048583984375,5000.0 26.06403923034668,44.482168583984375,5000.0 26.06197923034668,44.481048583984375,5000.0 26.06403923034668,44.479928583984375,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:1, Extensive:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff00aaff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.06403923034668,44.47996858398438,5000.0 26.066079230346677,44.481048583984375,5000.0 26.06403923034668,44.48212858398437,5000.0 26.061999230346682,44.481048583984375,5000.0 26.06403923034668,44.47996858398438,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:1, Complete:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff0000ff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.06403923034668,44.48000858398438,5000.0 26.066059230346678,44.481048583984375,5000.0 26.06403923034668,44.48208858398437,5000.0 26.06201923034668,44.481048583984375,5000.0 26.06403923034668,44.48000858398438,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:2, None:100%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff66ff99</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.136140823364258,44.45361109619141,5000.0 26.138240823364256,44.454811096191406,5000.0 26.136140823364258,44.4560110961914,5000.0 26.13404082336426,44.454811096191406,5000.0 26.136140823364258,44.45361109619141,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:2, Slight:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffffcc00</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.136140823364258,44.45365109619141,5000.0 26.138220823364257,44.454811096191406,5000.0 26.136140823364258,44.455971096191405,5000.0 26.13406082336426,44.454811096191406,5000.0 26.136140823364258,44.45365109619141,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:2, Moderate:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffcc3300</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.136140823364258,44.453691096191406,5000.0 26.138200823364258,44.454811096191406,5000.0 26.136140823364258,44.45593109619141,5000.0 26.134080823364258,44.454811096191406,5000.0 26.136140823364258,44.453691096191406,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:2, Extensive:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff00aaff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.136140823364258,44.45373109619141,5000.0 26.138180823364255,44.454811096191406,5000.0 26.136140823364258,44.4558910961914,5000.0 26.13410082336426,44.454811096191406,5000.0 26.136140823364258,44.45373109619141,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:2, Complete:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff0000ff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.136140823364258,44.45377109619141,5000.0 26.138160823364256,44.454811096191406,5000.0 26.136140823364258,44.4558510961914,5000.0 26.13412082336426,44.454811096191406,5000.0 26.136140823364258,44.45377109619141,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:3, None:100%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff66ff99</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.171449661254883,44.412782391357425,5000.0 26.17354966125488,44.41398239135742,5000.0 26.171449661254883,44.41518239135742,5000.0 26.169349661254884,44.41398239135742,5000.0 26.171449661254883,44.412782391357425,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:3, Slight:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffffcc00</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.171449661254883,44.41282239135742,5000.0 26.173529661254882,44.41398239135742,5000.0 26.171449661254883,44.41514239135742,5000.0 26.169369661254883,44.41398239135742,5000.0 26.171449661254883,44.41282239135742,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:3, Moderate:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffcc3300</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.171449661254883,44.41286239135742,5000.0 26.173509661254883,44.41398239135742,5000.0 26.171449661254883,44.41510239135742,5000.0 26.169389661254883,44.41398239135742,5000.0 26.171449661254883,44.41286239135742,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:3, Extensive:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff00aaff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.171449661254883,44.41290239135743,5000.0 26.17348966125488,44.41398239135742,5000.0 26.171449661254883,44.41506239135742,5000.0 26.169409661254885,44.41398239135742,5000.0 26.171449661254883,44.41290239135743,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:3, Complete:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff0000ff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.171449661254883,44.412942391357426,5000.0 26.17346966125488,44.41398239135742,5000.0 26.171449661254883,44.41502239135742,5000.0 26.169429661254885,44.41398239135742,5000.0 26.171449661254883,44.412942391357426,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:4, None:100%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff66ff99</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.120630264282227,44.37851878051758,5000.0 26.122730264282225,44.37971878051758,5000.0 26.120630264282227,44.380918780517575,5000.0 26.118530264282228,44.37971878051758,5000.0 26.120630264282227,44.37851878051758,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:4, Slight:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffffcc00</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.120630264282227,44.37855878051758,5000.0 26.122710264282226,44.37971878051758,5000.0 26.120630264282227,44.38087878051758,5000.0 26.118550264282227,44.37971878051758,5000.0 26.120630264282227,44.37855878051758,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:4, Moderate:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffcc3300</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.120630264282227,44.37859878051758,5000.0 26.122690264282227,44.37971878051758,5000.0 26.120630264282227,44.38083878051758,5000.0 26.118570264282226,44.37971878051758,5000.0 26.120630264282227,44.37859878051758,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:4, Extensive:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff00aaff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.120630264282227,44.37863878051758,5000.0 26.122670264282224,44.37971878051758,5000.0 26.120630264282227,44.38079878051757,5000.0 26.11859026428223,44.37971878051758,5000.0 26.120630264282227,44.37863878051758,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:4, Complete:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff0000ff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.120630264282227,44.37867878051758,5000.0 26.122650264282225,44.37971878051758,5000.0 26.120630264282227,44.380758780517574,5000.0 26.11861026428223,44.37971878051758,5000.0 26.120630264282227,44.37867878051758,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:5, None:100%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff66ff99</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.064929962158203,44.397958477783206,5000.0 26.067029962158202,44.3991584777832,5000.0 26.064929962158203,44.4003584777832,5000.0 26.062829962158204,44.3991584777832,5000.0 26.064929962158203,44.397958477783206,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:5, Slight:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffffcc00</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.064929962158203,44.397998477783204,5000.0 26.067009962158203,44.3991584777832,5000.0 26.064929962158203,44.4003184777832,5000.0 26.062849962158204,44.3991584777832,5000.0 26.064929962158203,44.397998477783204,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:5, Moderate:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffcc3300</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.064929962158203,44.3980384777832,5000.0 26.066989962158203,44.3991584777832,5000.0 26.064929962158203,44.4002784777832,5000.0 26.062869962158203,44.3991584777832,5000.0 26.064929962158203,44.3980384777832,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:5, Extensive:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff00aaff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.064929962158203,44.39807847778321,5000.0 26.0669699621582,44.3991584777832,5000.0 26.064929962158203,44.4002384777832,5000.0 26.062889962158206,44.3991584777832,5000.0 26.064929962158203,44.39807847778321,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:5, Complete:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff0000ff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.064929962158203,44.39811847778321,5000.0 26.0669499621582,44.3991584777832,5000.0 26.064929962158203,44.4001984777832,5000.0 26.062909962158205,44.3991584777832,5000.0 26.064929962158203,44.39811847778321,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:6, None:100%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff66ff99</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.010568618774414,44.442601879882815,5000.0 26.012668618774413,44.44380187988281,5000.0 26.010568618774414,44.44500187988281,5000.0 26.008468618774415,44.44380187988281,5000.0 26.010568618774414,44.442601879882815,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:6, Slight:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffffcc00</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.010568618774414,44.442641879882814,5000.0 26.012648618774413,44.44380187988281,5000.0 26.010568618774414,44.44496187988281,5000.0 26.008488618774415,44.44380187988281,5000.0 26.010568618774414,44.442641879882814,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:6, Moderate:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ffcc3300</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.010568618774414,44.44268187988281,5000.0 26.012628618774414,44.44380187988281,5000.0 26.010568618774414,44.44492187988281,5000.0 26.008508618774414,44.44380187988281,5000.0 26.010568618774414,44.44268187988281,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:6, Extensive:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff00aaff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.010568618774414,44.44272187988282,5000.0 26.01260861877441,44.44380187988281,5000.0 26.010568618774414,44.44488187988281,5000.0 26.008528618774417,44.44380187988281,5000.0 26.010568618774414,44.44272187988282,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-            <Placemark>
-                <name>Geounit:6, Complete:0.0%.</name>
-                <Style>
-                    <PolyStyle>
-                        <color>ff0000ff</color>
-                        <outline>1</outline>
-                    </PolyStyle>
-                </Style>
-                <Polygon>
-                    <extrude>1</extrude>
-                    <altitudeMode>relativeToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>26.010568618774414,44.442761879882816,5000.0 26.012588618774412,44.44380187988281,5000.0 26.010568618774414,44.44484187988281,5000.0 26.008548618774416,44.44380187988281,5000.0 26.010568618774414,44.442761879882816,5000.0</coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-            </Placemark>
-        </Folder>
-    </Document>
+    <Folder>
+        <name>builtarea</name>
+        <Placemark>
+            <name>1</name>
+            <styleUrl>#msn_ylw-pushpin</styleUrl>
+            <Style>
+                <PolyStyle>
+                    <color>7f66ff99</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <tessellate>1</tessellate>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>26.05891274674008,44.51520176208321,9.999999999999998 26.03582557403351,44.5101903183468,9.999999999999998 26.02503744694882,44.50049120187175,9.999999999999998 26.01796713814057,44.49437211890379,9.999999999999998 26.02934564926103,44.48284697831441,9.999999999999998 26.04849369159641,44.46986751595271,9.999999999999998 26.07304980485549,44.45406056891686,9.999999999999998 26.09377542960906,44.46415513437291,9.999999999999998 26.11115113847963,44.47494232296319,9.999999999999998 26.12207937263288,44.48094852335543,9.999999999999998 26.07029007617729,44.51657519374479,9.999999999999998 26.05891274674008,44.51520176208321,9.999999999999998</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+        <Placemark>
+            <name>2</name>
+            <styleUrl>#msn_ylw-pushpin</styleUrl>
+            <Style>
+                <PolyStyle>
+                    <color>7f66ff99</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <tessellate>1</tessellate>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>26.11074541298335,44.4751236256906,9.999999999999998 26.11419761568133,44.47519423140541,9.999999999999998 26.11836528165772,44.47736505229334,9.999999999999998 26.07370952113987,44.45416897867472,9.999999999999998 26.07883021284425,44.44905750106616,9.999999999999998 26.1018013398365,44.43596224789742,9.999999999999998 26.12333801704909,44.42188348704359,9.999999999999998 26.13521426021494,44.42382784294696,9.999999999999998 26.15329309068369,44.43025709052235,9.999999999999998 26.18059982666181,44.44587723960945,9.999999999999998 26.12157037870221,44.48036934037586,9.999999999999998 26.11074541298335,44.4751236256906,9.999999999999998</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+        <Placemark>
+            <name>3</name>
+            <styleUrl>#msn_ylw-pushpin</styleUrl>
+            <Style>
+                <PolyStyle>
+                    <color>7f66ff99</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <tessellate>1</tessellate>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>26.12364041538613,44.42094085112068,9.999999999999998 26.12901474622675,44.41934037736035,9.999999999999998 26.13777691634023,44.41258692410258,9.999999999999998 26.15789335848131,44.40074087490541,9.999999999999998 26.18399140578707,44.38862899789621,9.999999999999998 26.20872535541164,44.39812656336858,9.999999999999998 26.23287317940679,44.41273016934214,9.999999999999998 26.18064629662085,44.44464459557998,9.999999999999998 26.12364041538613,44.42094085112068,9.999999999999998</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+        <Placemark>
+            <name>4</name>
+            <styleUrl>#msn_ylw-pushpin</styleUrl>
+            <Style>
+                <PolyStyle>
+                    <color>7f66ff99</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <tessellate>1</tessellate>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>26.13082199875894,44.41755703128397,9.999999999999998 26.10936008217082,44.40408435000467,9.999999999999998 26.07533254010809,44.38207163446094,9.999999999999998 26.08259907815497,44.37355550603761,9.999999999999998 26.11035261345013,44.35545423345802,9.999999999999998 26.14431374270631,44.36898593061502,9.999999999999998 26.18175626484538,44.3870418719493,9.999999999999998 26.13082199875894,44.41755703128397,9.999999999999998</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+        <Placemark>
+            <name>5</name>
+            <styleUrl>#msn_ylw-pushpin</styleUrl>
+            <Style>
+                <PolyStyle>
+                    <color>7f66ff99</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <tessellate>1</tessellate>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>26.13067035912851,44.41803000997007,9.999999999999998 26.10528016546452,44.43303372226195,9.999999999999998 26.07851151191882,44.44905096741258,9.999999999999998 26.05690449587671,44.43280321013329,9.999999999999998 26.02726844645353,44.41448689253409,9.999999999999998 26.05275327385134,44.39702832228805,9.999999999999998 26.07573939007213,44.38188964033309,9.999999999999998 26.13067035912851,44.41803000997007,9.999999999999998</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+        <Placemark>
+            <name>6</name>
+            <styleUrl>#msn_ylw-pushpin</styleUrl>
+            <Style>
+                <PolyStyle>
+                    <color>7f66ff99</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <tessellate>1</tessellate>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>26.01774397515348,44.49358300455071,9.999999999999998 25.99643709232669,44.47961930082352,9.999999999999998 25.9705206802072,44.45840612273716,9.999999999999998 25.99906282369988,44.43597471781953,9.999999999999998 26.02711597674018,44.41495952915869,9.999999999999998 26.05649730526434,44.43298516987937,9.999999999999998 26.07902163228157,44.44963312479985,9.999999999999998 26.01774397515348,44.49358300455071,9.999999999999998</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+    </Folder>
 </kml>

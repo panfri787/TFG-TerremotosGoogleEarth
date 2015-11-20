@@ -104,8 +104,8 @@ public class ShakeCenterManager extends AbstractFileManager {
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
                 float biggest;
-                if(placemark.getName().equals(shakecenters.get(i).getGeounit()) ||
-                        placemark.getId().equals(shakecenters.get(i).getGeounit())) {
+                if((placemark.getName() != null && placemark.getName().equals(shakecenters.get(i).getGeounit())) ||
+                        (placemark.getId() != null && placemark.getId().equals(shakecenters.get(i).getGeounit()))) {
                     switch(this.getAdditionalData()){
                         case "pga":
                             biggest = Shakecenter.findBiggestPgaAcceleration(shakecenters);

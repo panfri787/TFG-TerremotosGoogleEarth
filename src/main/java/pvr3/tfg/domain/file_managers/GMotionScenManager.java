@@ -112,8 +112,8 @@ public class GMotionScenManager extends AbstractFileManager {
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
                 float biggest;
-                if(placemark.getName().equals(gmotionscenes.get(i).getGeounit()) ||
-                        placemark.getId().equals(gmotionscenes.get(i).getGeounit())) {
+                if((placemark.getName() != null && placemark.getName().equals(gmotionscenes.get(i).getGeounit())) ||
+                        (placemark.getId() != null && placemark.getId().equals(gmotionscenes.get(i).getGeounit()))) {
                     switch(this.additionalDataArray[0]){
                         case "pga":
                             biggest = GMotionScen.findBiggestPgaAcceleration(gmotionscenes);

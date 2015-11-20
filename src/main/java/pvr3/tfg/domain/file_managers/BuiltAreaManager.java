@@ -88,8 +88,8 @@ public class BuiltAreaManager extends AbstractFileManager {
 
             if(polyFolder.getFeature().get(i) instanceof Placemark){
                 Placemark placemark = (Placemark) polyFolder.getFeature().get(i);
-                if(placemark.getName().equals(builtAreas.get(i).getGeounit()) ||
-                        placemark.getId().equals(builtAreas.get(i).getGeounit())) {
+                if((placemark.getName() != null && placemark.getName().equals(builtAreas.get(i).getGeounit())) ||
+                        (placemark.getId()!= null && placemark.getId().equals(builtAreas.get(i).getGeounit()))) {
                     placemark.createAndAddStyle().withPolyStyle(builtAreas.get(i).getKmlStyle());
                     soilFolder.addToFeature(placemark);
                 }
